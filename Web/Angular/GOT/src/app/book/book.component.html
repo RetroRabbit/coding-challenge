@@ -1,0 +1,17 @@
+<!-- <ul>
+    <li *ngFor="let book of books">
+      <h3>{{ book.name }}</h3>
+      <p>ISBN: {{ book.isbn }}</p>
+      <p>Authors: {{ book.authors.join(', ') }}</p>
+    </li>
+  </ul>
+   -->
+
+   <h1>You Selected Book</h1>
+   <button (click)="getBook(1)">Get Book</button>
+
+<div *ngIf="book">
+  <h3>{{ book.name }}</h3>
+  <p>ISBN: {{ book.isbn }}</p>
+  <p>Authors: {{ book.authors.join(', ') }}</p>
+</div>
