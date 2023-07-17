@@ -1,1 +1,8 @@
-<p>house-details works!</p>
+<button (click)="GoBack()">Go Back</button>
+<div *ngIf="selectedHouse">
+  <h2>{{ selectedHouse.name }}</h2>
+  <p>Region: {{ selectedHouse.region }}</p>
+  <p>Coat of Arms: {{ selectedHouse.coatOfArms }}</p>
+  <p>Words: {{ selectedHouse.words }}</p>
+  <!-- Display other properties as needed -->
+</div>
