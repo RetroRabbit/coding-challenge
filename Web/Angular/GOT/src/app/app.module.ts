@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { bookReducer } from './reducers/book.reducer';
 import { BookEffects } from './effects/book.effects';
-import { BookComponent } from './book/book.component';
+import { BookComponent } from './components/book/book.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

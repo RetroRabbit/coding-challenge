@@ -7,6 +7,10 @@ import * as BookActions from '../actions/book.actions';
 
 @Injectable()
 export class BookEffects {
+  constructor(
+    private actions$: Actions,
+    private bookService: BookService
+  ) { }
   getBook$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BookActions.getBook),
@@ -31,8 +35,4 @@ export class BookEffects {
     )
   );
 
-  constructor(
-    private actions$: Actions,
-    private bookService: BookService
-  ) {}
 }
