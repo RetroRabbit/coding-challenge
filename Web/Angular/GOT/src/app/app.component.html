@@ -1,1 +1,28 @@
-<app-book></app-book>
+<!-- <app-book></app-book> -->
+<!-- <app-house></app-house> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink=''>
+        <img src="https://freepngimg.com/save/13198-game-of-thrones-logo-picture/800x310" alt="Game of Thrones" width="100" >
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink=''>Houses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=Books>Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink=Characters>Characters</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>

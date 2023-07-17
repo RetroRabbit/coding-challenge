@@ -1,6 +1,8 @@
 import { Character } from "./character.model";
 
 export interface House {
+    house : House,
+    houses : House[],
     url: string,
     name: string,
     region: string,
@@ -10,7 +12,7 @@ export interface House {
     seats: string[],
     currentLord: Character,
     heir: string,
-    overlord: Character,
+    overlord: House,
     founded: string,
     founder: Character,
     diedOut: string,

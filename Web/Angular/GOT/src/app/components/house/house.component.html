@@ -1,0 +1,32 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div *ngFor="let house of houses;let i = index" class="col-md-3 my-2" (click)="SelectedHouse(i)">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="card-title">{{house.name}}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <h4 for="">Region: </h4>
+                            <h5>{{house.region}}</h5>
+                        </div>
+                        <div class="col-md-6">
+
+                            <h4>Words: </h4>
+                            <h5>{{house.words}}</h5>
+                        </div>
+                        <hr>
+                        <div class="col-xs-12">
+
+                            <h4 for="">Coat of Arms:</h4>
+                            <h5> {{house.coatOfArms}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
