@@ -13,6 +13,9 @@ import { BookEffects } from './effects/book.effects';
 import { houseReducer } from './reducers/house.reducers';
 import { HouseEffects } from './effects/house.effects';
 
+import { characterReducer } from './reducers/character.reducers';
+import { CharacterEffects } from './effects/character.effects';
+
 import { BookComponent } from './components/book/book.component';
 import { HouseComponent } from './components/house/house.component';
 import { CharacterComponent } from './components/character/character.component';
@@ -29,8 +32,8 @@ import { HouseDetailsComponent } from './components/house-details/house-details.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ book: bookReducer, house : houseReducer}),
-    EffectsModule.forRoot([BookEffects, HouseEffects]),
+    StoreModule.forRoot({ book: bookReducer, house : houseReducer, character : characterReducer}),
+    EffectsModule.forRoot([BookEffects, HouseEffects, CharacterEffects]),
     HttpClientModule
   ],
   providers: [],

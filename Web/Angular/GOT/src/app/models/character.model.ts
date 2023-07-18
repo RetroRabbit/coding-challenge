@@ -1,8 +1,8 @@
 import { Book } from "./book.model";
 
 export interface Character {
-    house : Character,
-    houses : Character[],
+    character : Character,
+    characters : Character[],
     url: string,
     name: string,
     gender: string,

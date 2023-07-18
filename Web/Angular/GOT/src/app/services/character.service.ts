@@ -12,11 +12,17 @@ export class CharacterService {
   constructor(private http: HttpClient) {}
 
   getCharacter(characterId: string): Observable<Character> {
-    const url = `${this.baseUrl}/${characterId}`;
+    const url = `${characterId}`;
     return this.http.get<Character>(url);
   }
 
   getAllCharacters(): Observable<Character[]> {
     return this.http.get<Character[]>(this.baseUrl);
+  }
+
+  getACharacter(endpoint: string): Observable<Character> {
+    const url = `${endpoint}`;
+
+    return this.http.get<Character>(url);
   }
 }

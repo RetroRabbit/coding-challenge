@@ -10,13 +10,13 @@ export interface House {
     words: string,
     titles: string[],
     seats: string[],
-    currentLord: Character,
+    currentLord: string,
     heir: string,
     overlord: House,
     founded: string,
-    founder: Character,
+    founder: string,
     diedOut: string,
     ancestralWeapons: string[],
     cadetBranches: string[],
-    swornMembers: Character[]
+    swornMembers: string[]
 }

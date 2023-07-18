@@ -1,1 +1,6 @@
-<p>character works!</p>
+<div *ngIf="character; else noCharacter">
+    <h4> Hello - {{character.name}}</h4>
+</div>
+<ng-template #noCharacter>
+    <h5>No character provided</h5>
+</ng-template>

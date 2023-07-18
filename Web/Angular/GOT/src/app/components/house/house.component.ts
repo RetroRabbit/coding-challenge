@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { getAllHouses, getHouse } from '../../actions/house.actions';
 import { House } from '../../models/house.model';
 import { Router } from '@angular/router';
+import { getAllCharacters } from '../../actions/character.actions';
+import { Character } from '../../models/character.model';
 @Component({
   selector: 'app-house',
   templateUrl: './house.component.html',
@@ -11,26 +13,26 @@ import { Router } from '@angular/router';
 export class HouseComponent  {
   house : House | undefined;
   houses : House[] = [];
-
-  constructor(private store: Store<{house : House}>, private router : Router){}
+  characters : Character[] = [];
+  constructor(private store: Store<{house : House}>, private cstore : Store<{character : Character}>, private router : Router){}
   ngOnInit() {
+    this.store.dispatch(getAllHouses());
     this.store.select('house').subscribe(state => {
-      this.house = state.house;
+      // this.house = state.house;
       this.houses = state.houses;
     });
-
-    // Dispatch actions to get book and all books
-    // this.store.dispatch(getBook({ bookId: '1' }));
-    this.store.dispatch(getAllHouses());
+    // this.cstore.dispatch(getAllCharacters());
+    // this.cstore.select('character').subscribe(state =>{
+    //   try{
+    //     console.log(state.characters)
+    //   }catch(err){
+    //     console.log(err)
+    //   }
+    // })
   }
-  // getHouse(houseId: any){
-  //   this.store.dispatch(getHouse({ houseId }));
-  // }
-
   SelectedHouse(houseName: string){
+    console.log(houseName)
     this.store.dispatch(getHouse({ houseId: houseName }));
-    this.router.navigate(['/Details']);
+    this.router.navigate(['/Details/']);
   }
 }
-
-
