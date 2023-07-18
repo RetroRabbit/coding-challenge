@@ -19,4 +19,8 @@ export class HouseService {
     const queries = `?page=${pageNumber}&pageSize=8`;
     return this.http.get<House[]>(this.baseUrl + queries);
   }
+  getAHouse(endpoint: string): Observable<House> {
+    const url = `${endpoint}`;
+    return this.http.get<House>(url);
+  }
 }

@@ -12,7 +12,7 @@ export interface House {
     seats: string[],
     currentLord: string,
     heir: string,
-    overlord: House,
+    overlord: string,
     founded: string,
     founder: string,
     diedOut: string,

@@ -7,6 +7,7 @@ import { getCharacter } from 'src/app/actions/character.actions';
 import { asapScheduler } from 'rxjs/internal/scheduler/asap';
 import { CharacterService } from 'src/app/services/character.service';
 import { Observable, forkJoin, map } from 'rxjs';
+import { HouseService } from 'src/app/services/house.service';
 @Component({
   selector: 'app-house-details',
   templateUrl: './house-details.component.html',
@@ -17,22 +18,29 @@ export class HouseDetailsComponent {
   character !: Character;
   currentLord !: Character
   swornMembers: Character[] = [];
+  founder !: Character;
+  heir !: Character;
+  cadetBranches : House[] = [];
+  overlord !: House;
   hascurrentLord = false;
-
+  
   currentCharacter$ = this.store.select('character');
 
-  constructor(private store: Store<{ house: House, character: Character }>, private location: Location, private Cservice: CharacterService) { }
+  constructor(private store: Store<{ house: House, character: Character }>, private location: Location, private Cservice: CharacterService, private houseService: HouseService) { }
   ngOnInit() {
     this.swornMembers = []
     this.store.select('house').subscribe(state => {
       this.selectedHouse = state.house;
-      console.log(this.selectedHouse.url)
       this.store.dispatch(getCharacter({ characterId: this.selectedHouse.currentLord }));
       this.store.select('character').subscribe(state => {
           this.currentLord = state.character
         })
     });
-    this.GetSwornMembers(this.selectedHouse.swornMembers)
+    this.GetSwornMembers(this.selectedHouse.swornMembers);
+    this.GetFounder(this.selectedHouse.founder);
+    this.GetHeir(this.selectedHouse.heir);
+    this.GetCadetBranches(this.selectedHouse.cadetBranches);
+    this.GetOverLord(this.selectedHouse.overlord);
   }
    
   GetSwornMembers(swornMembers: string[]) {
@@ -41,28 +49,50 @@ export class HouseDetailsComponent {
     });
     swornMemberRequests.forEach(observable => {
       observable.subscribe(character => {
-        // console.log(character);
         this.swornMembers.push(character)
       });
     });
     console.log(this.swornMembers);
   } 
+  GetFounder(url : string){
+    const founderRequest: Observable<Character>[] = [this.Cservice.getCharacter(url)];
+    founderRequest.forEach(observable => {
+      observable.subscribe(character => {
+       this.founder = character;
+      });
+    });
+  }
+  GetHeir(url : string){
+    const founderRequest: Observable<Character>[] = [this.Cservice.getCharacter(url)];
+    founderRequest.forEach(observable => {
+      observable.subscribe(character => {
+       this.heir = character;
+      });
+    });
+  }
 
-  GetMember(c : any) : Character{
-    console.log(c)
+  GetCadetBranches(cadetBranches: string[]) {
+    const cadetBranchesRequst: Observable<House>[] = cadetBranches.map(endpoint => {
+      return this.houseService.getAHouse(endpoint);
+    });
+    cadetBranchesRequst.forEach(observable => {
+      observable.subscribe(character => {
+        // console.log(character);
+        this.cadetBranches.push(character)
+      });
+    });
+    console.log(this.swornMembers);
+  }
 
-    let newCharacter!: Character;
-    return newCharacter;
+  GetOverLord(url : string){
+    const overlordRequest: Observable<House>[] = [this.houseService.getAHouse(url)];
+    overlordRequest.forEach(observable => {
+      observable.subscribe(house => {
+       this.overlord = house;
+      });
+    });
   }
   GoBack() {
     this.location.back();
-  }
-
-  ReturnCharacter(c: any, url: any): Character | undefined {
-    // this.GetCharacter(url);
-    // console.log(c.character)
-
-    let newCharacter: Character | undefined;
-    return c.character;
   }
 }

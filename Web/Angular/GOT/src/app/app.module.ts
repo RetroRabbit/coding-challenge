@@ -20,6 +20,7 @@ import { BookComponent } from './components/book/book.component';
 import { HouseComponent } from './components/house/house.component';
 import { CharacterComponent } from './components/character/character.component';
 import { HouseDetailsComponent } from './components/house-details/house-details.component';
+import { BaseHouseComponent } from './components/base-house/base-house.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HouseDetailsComponent } from './components/house-details/house-details.
     HouseComponent,
     CharacterComponent,
     HouseDetailsComponent,
+    BaseHouseComponent,
   ],
   imports: [
     BrowserModule,

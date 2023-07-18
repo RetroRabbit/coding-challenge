@@ -1,0 +1,55 @@
+/* .card , .col-12{
+    display: flex;
+    height: 100%;
+}
+
+.card-body {
+    flex: 3;
+} */
+/* .card {
+    display: block; 
+  }
+  
+  .card-body {
+    flex: auto;
+  } */
+
+  /* .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card-body {
+    flex: 1;
+  } */
+
+  /* .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+   */
+   .card-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card-body .col-md-4 {
+    flex-basis: 33.33%;
+    max-width: 33.33%;
+  }
+  
