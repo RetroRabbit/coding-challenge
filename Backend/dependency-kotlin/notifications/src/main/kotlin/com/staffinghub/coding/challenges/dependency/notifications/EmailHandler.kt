@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component
 
 private val logger = KotlinLogging.logger {}
 
+
 @Component
 class EmailHandler {
     fun sendEmail(inquiry: Inquiry) {

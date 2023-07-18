@@ -17,7 +17,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 class InquiryTest(
     @Autowired private val inquiryService: InquiryService,
 ) {
-
     @SpykBean
     lateinit var emailHandler: EmailHandler
 
