@@ -15,8 +15,8 @@ export class HouseService {
     const url = `${this.baseUrl}/${houseId}`;
     return this.http.get<House>(url);
   }
-
-  getAllHouses(): Observable<House[]> {
-    return this.http.get<House[]>(this.baseUrl);
+  getAllHouses(pageNumber: number): Observable<House[]> {
+    const queries = `?page=${pageNumber}&pageSize=8`;
+    return this.http.get<House[]>(this.baseUrl + queries);
   }
 }

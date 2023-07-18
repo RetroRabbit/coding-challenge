@@ -13,9 +13,11 @@ export class HouseComponent  {
   house : House | undefined;
   houses : House[] = [];
   characters : Character[] = [];
-  constructor(private store: Store<{house : House}>, private cstore : Store<{character : Character}>, private router : Router){}
+  static currentPage = 1;
+  constructor(private store: Store<{house : House}>, private router : Router){}
   ngOnInit() {
-    this.store.dispatch(getAllHouses());
+    // this.store.dispatch(getAllHouses());
+    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
     this.store.select('house').subscribe(state => {
       // this.house = state.house;
       this.houses = state.houses;
@@ -25,5 +27,37 @@ export class HouseComponent  {
     console.log(houseName)
     this.store.dispatch(getHouse({ houseId: houseName }));
     this.router.navigate(['/Details/']);
+  }
+
+  ShowFirst(){
+    HouseComponent.currentPage = 1;
+    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
+  }
+
+  ShowLast(){
+    HouseComponent.currentPage = 213;
+    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
+  }
+
+  ShowNext(){
+    if(HouseComponent.currentPage < 213){
+      HouseComponent.currentPage += 1;
+    }else{
+      HouseComponent.currentPage = 213
+    }
+    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
+  }
+
+  ShowPrev(){
+    if(HouseComponent.currentPage > 1){
+      HouseComponent.currentPage -= 1;
+    }else{
+      HouseComponent.currentPage = 1
+    }
+    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
+  }
+
+  GetCurrentPage(): number {
+    return HouseComponent.currentPage;
   }
 }
