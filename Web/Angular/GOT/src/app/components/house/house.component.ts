@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { getAllHouses, getHouse } from '../../actions/house.actions';
 import { House } from '../../models/house.model';
 import { Router } from '@angular/router';
-import { getAllCharacters } from '../../actions/character.actions';
 import { Character } from '../../models/character.model';
 @Component({
   selector: 'app-house',
