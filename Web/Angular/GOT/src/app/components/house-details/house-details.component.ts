@@ -4,7 +4,6 @@ import { House } from 'src/app/models/house.model';
 import { Store } from '@ngrx/store';
 import { Character } from 'src/app/models/character.model';
 import { getCharacter } from 'src/app/actions/character.actions';
-import { asapScheduler } from 'rxjs/internal/scheduler/asap';
 import { CharacterService } from 'src/app/services/character.service';
 import { Observable, forkJoin, map } from 'rxjs';
 import { HouseService } from 'src/app/services/house.service';

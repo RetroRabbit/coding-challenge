@@ -19,6 +19,14 @@ export const initialState: CharacterState = {
 export const characterReducer = createReducer(
   initialState,
   on(CharacterActions.getCharacter, state => ({ ...state, loading: true })),
+  on(CharacterActions.getCharacter, (state, { characterId }) => {
+    const selectedHouse = state.characters.find(character => character.url === characterId);
+    return {
+      ...state,
+      house: selectedHouse || null,
+      loading: true
+    };
+  }),
   on(CharacterActions.getCharacterSuccess, (state, { character }) => ({ ...state, character, loading: false })),
   on(CharacterActions.getAllCharacters, state => ({ ...state, loading: true })),
   on(CharacterActions.getAllCharactersSuccess, (state, { characters }) => ({ ...state, characters, loading: false })),

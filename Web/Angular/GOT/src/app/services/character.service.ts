@@ -16,8 +16,9 @@ export class CharacterService {
     return this.http.get<Character>(url);
   }
 
-  getAllCharacters(): Observable<Character[]> {
-    return this.http.get<Character[]>(this.baseUrl);
+  getAllCharacters(pageNumber: number): Observable<Character[]> {
+    const queries = `?page=${pageNumber}&pageSize=8`;
+    return this.http.get<Character[]>(this.baseUrl + queries);
   }
 
   getACharacter(endpoint: string): Observable<Character> {

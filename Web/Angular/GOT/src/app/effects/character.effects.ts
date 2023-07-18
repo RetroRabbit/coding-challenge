@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { CharacterService } from '../services/character.service';
 import * as CharacterActions from '../actions/character.actions';
+import { getAllCharacters, getAllCharactersSuccess } from '../actions/character.actions';
 
 @Injectable()
 export class CharacterEffects {
@@ -23,16 +24,25 @@ export class CharacterEffects {
     )
   );
 
+  // getAllCharacters$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(CharacterActions.getAllCharacters),
+  //     mergeMap(() =>
+  //       this.characterService.getAllCharacters().pipe(
+  //         map(characters => CharacterActions.getAllCharactersSuccess({ characters })),
+  //         catchError(error => of(CharacterActions.getCharactersFailure({ error })))
+  //       )
+  //     )
+  //   )
+  // );
   getAllCharacters$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(CharacterActions.getAllCharacters),
-      mergeMap(() =>
-        this.characterService.getAllCharacters().pipe(
-          map(characters => CharacterActions.getAllCharactersSuccess({ characters })),
-          catchError(error => of(CharacterActions.getCharactersFailure({ error })))
-        )
+  this.actions$.pipe(
+    ofType(CharacterActions.getAllCharacters),
+    mergeMap(({ pageNumber }) =>
+      this.characterService.getAllCharacters(pageNumber).pipe(
+        map(characters => CharacterActions.getAllCharactersSuccess({ characters })),
+        catchError(error => of(CharacterActions.getCharactersFailure({ error })))
       )
     )
-  );
-
+  ));
 }
