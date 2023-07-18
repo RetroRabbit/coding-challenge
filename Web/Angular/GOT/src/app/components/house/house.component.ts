@@ -21,14 +21,6 @@ export class HouseComponent  {
       // this.house = state.house;
       this.houses = state.houses;
     });
-    // this.cstore.dispatch(getAllCharacters());
-    // this.cstore.select('character').subscribe(state =>{
-    //   try{
-    //     console.log(state.characters)
-    //   }catch(err){
-    //     console.log(err)
-    //   }
-    // })
   }
   SelectedHouse(houseName: string){
     console.log(houseName)
