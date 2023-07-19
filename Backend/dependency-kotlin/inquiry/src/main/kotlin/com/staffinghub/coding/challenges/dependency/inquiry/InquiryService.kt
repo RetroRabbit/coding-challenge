@@ -7,13 +7,12 @@ import org.springframework.context.ApplicationEventPublisher
 private val logger = KotlinLogging.logger {}
 
 @Component
-
-class InquiryService {
+class InquiryService (private val applicationEventPublisher: ApplicationEventPublisher) {
     fun create(inquiry: Inquiry) {
         logger.info {
             "User sent inquiry: $inquiry"
         }
-//        applicationEventPublisher.publishEvent(InquiryCreatedEvent(this, inquiry))
+        applicationEventPublisher.publishEvent(InquiryCreatedEvent(this, inquiry))
     }
 }
 

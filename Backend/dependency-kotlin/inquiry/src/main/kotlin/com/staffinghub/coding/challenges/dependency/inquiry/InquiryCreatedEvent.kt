@@ -1,6 +1,5 @@
-package com.staffinghub.coding.challenges.dependency.notifications
+package com.staffinghub.coding.challenges.dependency.inquiry
 
-import com.staffinghub.coding.challenges.dependency.inquiry.Inquiry
 import org.springframework.context.ApplicationEvent
 
 class InquiryCreatedEvent(source: Any, val inquiry: Inquiry) : ApplicationEvent(source){

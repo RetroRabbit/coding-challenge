@@ -1,4 +1,5 @@
 package com.staffinghub.coding.challenges.dependency.notifications
+import com.staffinghub.coding.challenges.dependency.inquiry.InquiryCreatedEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
