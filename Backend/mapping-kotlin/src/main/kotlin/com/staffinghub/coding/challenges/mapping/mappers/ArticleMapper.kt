@@ -2,14 +2,15 @@ package com.staffinghub.coding.challenges.mapping.mappers
 
 import com.staffinghub.coding.challenges.mapping.models.db.Article
 import com.staffinghub.coding.challenges.mapping.models.dto.ArticleDto
+import mapper.adaptTo
 import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
 class ArticleMapper {
     fun map(article: Article?): ArticleDto {
-        //TODO
-        return ArticleDto(0, "", "", "", emptyList())
+        val articleDto = article?.adaptTo(ArticleDto::class)
+        return articleDto!!
     }
 
     // Not part of the challenge / Nicht Teil dieser Challenge.

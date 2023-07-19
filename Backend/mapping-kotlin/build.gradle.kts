@@ -13,11 +13,19 @@ version = "0.0.1-SNAPSHOT"
 
 repositories {
 	mavenCentral()
+	maven {
+		url = uri("https://maven.pkg.github.com/liodali/KotlinMapster")
+		credentials {
+			username = "AWallsRR"
+			password = "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"
+		}
+	}
 }
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation ("com.hamza.dali:mapster-ktx:0.4.0")
 }
 
 tasks {

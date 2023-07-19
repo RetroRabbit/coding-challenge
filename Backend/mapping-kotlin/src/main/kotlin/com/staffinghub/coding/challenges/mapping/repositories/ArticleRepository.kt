@@ -23,7 +23,7 @@ object ArticleRepository {
             title = "Article Nr.: $this",
             description = "Article Description $this",
             author = "Max Mustermann",
-            blocks = dummyArticleBlocks,
+            blocks = dummyArticleBlocks.sortedWith(compareBy { it.sortIndex }).toSet(),
         )
 
     private val Long.dummyArticleBlocks: Set<ArticleBlock> by lazy {
