@@ -22,18 +22,6 @@ export class HouseEffects {
       )
     )
   );
-
-  // getAllHouses$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(HouseActions.getAllHouses),
-  //     mergeMap(() =>
-  //       this.houseService.getAllHouses().pipe(
-  //         map(houses => HouseActions.getAllHousesSuccess({ houses })),
-  //         catchError(error => of(HouseActions.getHousesFailure({ error })))
-  //       )
-  //     )
-  //   )
-  // );
   getAllHouses$ = createEffect(() =>
   this.actions$.pipe(
     ofType(HouseActions.getAllHouses),

@@ -18,7 +18,14 @@ export const initialState: BookState = {
 
 export const bookReducer = createReducer(
   initialState,
-  on(BookActions.getBook, state => ({ ...state, loading: true })),
+  on(BookActions.getBook, (state, { bookId }) => {
+    const selectedBook = state.books.find(house => house.name === bookId);
+    return {
+      ...state,
+      house: selectedBook || null,
+      loading: true
+    };
+  }),
   on(BookActions.getBookSuccess, (state, { book }) => ({ ...state, book, loading: false })),
   on(BookActions.getAllBooks, state => ({ ...state, loading: true })),
   on(BookActions.getAllBooksSuccess, (state, { books }) => ({ ...state, books, loading: false })),

@@ -20,10 +20,10 @@ export const characterReducer = createReducer(
   initialState,
   on(CharacterActions.getCharacter, state => ({ ...state, loading: true })),
   on(CharacterActions.getCharacter, (state, { characterId }) => {
-    const selectedHouse = state.characters.find(character => character.url === characterId);
+    const selectedCharacter = state.characters.find(character => character.url === characterId);
     return {
       ...state,
-      house: selectedHouse || null,
+      house: selectedCharacter || null,
       loading: true
     };
   }),

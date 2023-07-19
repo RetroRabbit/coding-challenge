@@ -22,17 +22,15 @@ export class BookEffects {
       )
     )
   );
-
   getAllBooks$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(BookActions.getAllBooks),
-      mergeMap(() =>
-        this.bookService.getAllBooks().pipe(
-          map(books => BookActions.getAllBooksSuccess({ books })),
-          catchError(error => of(BookActions.getBooksFailure({ error })))
-        )
+  this.actions$.pipe(
+    ofType(BookActions.getAllBooks),
+    mergeMap(({ pageNumber }) =>
+      this.bookService.getAllBooks(pageNumber).pipe(
+        map(books => BookActions.getAllBooksSuccess({ books })),
+        catchError(error => of(BookActions.getBooksFailure({ error })))
       )
     )
-  );
-
+  )
+);
 }

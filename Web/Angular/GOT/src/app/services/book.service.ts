@@ -16,7 +16,8 @@ export class BookService {
     return this.http.get<Book>(url);
   }
 
-  getAllBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.baseUrl);
+  getAllBooks(pageNumber: number): Observable<Book[]> {
+    const queries = `?page=${pageNumber}&pageSize=8`;
+    return this.http.get<Book[]>(this.baseUrl + queries);
   }
 }
