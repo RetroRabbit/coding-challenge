@@ -8,8 +8,4 @@ import { Book } from 'src/app/models/book.model';
 })
 export class BaseBookComponent {
   @Input('book') book !: Book;
-  ngOnInit(){
-
-    console.log(this.book);
-  }
 }

@@ -6,6 +6,7 @@ import { Character } from 'src/app/models/character.model';
 import { House } from 'src/app/models/house.model';
 import { CharacterService } from 'src/app/services/character.service';
 import { BookService } from '../../services/book.service';
+import { HouseService } from 'src/app/services/house.service';
 
 @Component({
   selector: 'app-character-details',
@@ -21,24 +22,20 @@ export class CharacterDetailsComponent {
   allegiances : House[] = [];
   books : Book[] = [];
   povbooks : Book[] = [];
-  constructor(private store : Store<{character : Character}>,  private characterService: CharacterService, private bookService: BookService){}
+  constructor(private store : Store<{character : Character}>,  private characterService: CharacterService, private bookService: BookService, private houseService: HouseService){}
   ngOnInit(){
     this.store.select('character').subscribe(state => {
       this.selectedCharacter = state.character;
-<<<<<<< Updated upstream
-=======
-      // console.log(this.selectedCharacter.books)
-      this.GetBooks(this.selectedCharacter.books)
->>>>>>> Stashed changes
+      this.GetBooks(this.selectedCharacter.books);
+      this.GetBooks(this.selectedCharacter.povBooks);
+      this.GetAllegiances(this.selectedCharacter.allegiances);
+      this.GetSpouse(this.selectedCharacter.spouse)
+      this.GetMother(this.selectedCharacter.mother)
+      this.GetFather(this.selectedCharacter.father)
     });
-    // if(this.selectedCharacter.books){console.log(this.selectedCharacter.books);this.GetBooks(this.selectedCharacter.books)}
-    if(this.selectedCharacter.spouse){this.GetSpouse(this.selectedCharacter.spouse)}
-    if(this.selectedCharacter.mother){this.GetMother(this.selectedCharacter.mother)}
-    if(this.selectedCharacter.father){this.GetFather(this.selectedCharacter.father)}
   }
 
   GetBooks(books : any[]){
-    // console.log(books)
     const bookRequest: Observable<Book>[] = books.map(endpoint => {
       return this.bookService.getBook(endpoint);
     });
@@ -48,7 +45,27 @@ export class CharacterDetailsComponent {
       });
     });
   }
-  GetAllegiances(){} 
+
+  GetPOVBooks(books : any[]){
+    const bookRequest: Observable<Book>[] = books.map(endpoint => {
+      return this.bookService.getBook(endpoint);
+    });
+    bookRequest.forEach(observable => {
+      observable.subscribe(book => {
+        this.books.push(book)
+      });
+    });
+  }
+  GetAllegiances(allegiances : any[]){
+    const allegianceRequest: Observable<House>[] = allegiances.map(endpoint => {
+      return this.houseService.getAHouse(endpoint);
+    });
+    allegianceRequest.forEach(observable => {
+      observable.subscribe(house => {
+        this.allegiances.push(house)
+      });
+    });
+  } 
   GetSpouse(url: string){
     const spouseRequest : Observable<Character>[] =[this.characterService.getCharacter(url)];
     spouseRequest.forEach(observable => {
@@ -58,16 +75,16 @@ export class CharacterDetailsComponent {
     });
   }
   GetFather(url: string){
-    const spouseRequest : Observable<Character>[] =[this.characterService.getCharacter(url)];
-    spouseRequest.forEach(observable => {
+    const fatherRequest : Observable<Character>[] =[this.characterService.getCharacter(url)];
+    fatherRequest.forEach(observable => {
       observable.subscribe(character => {
        this.father = character;
       });
     });
   }
   GetMother(url: string){
-    const spouseRequest : Observable<Character>[] =[this.characterService.getCharacter(url)];
-    spouseRequest.forEach(observable => {
+    const motherReuqst : Observable<Character>[] =[this.characterService.getCharacter(url)];
+    motherReuqst.forEach(observable => {
       observable.subscribe(character => {
        this.mother = character;
       });

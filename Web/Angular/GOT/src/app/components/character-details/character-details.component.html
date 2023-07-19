@@ -57,9 +57,9 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-4">
                                             <h4>Allegiances</h4>
-                                            <div *ngIf="allegiances.length > 0; else noAllegiances">
+                                            <div *ngIf="allegiances[0]; else noAllegiances">
                                                 <ul>
-                                                    <li *ngFor="let ally of allegiances"><app-base-house></app-base-house></li>
+                                                    <li *ngFor="let ally of allegiances"><app-base-house [baseHouse]=ally></app-base-house></li>
                                                 </ul>
                                             </div>
                                             <ng-template #noAllegiances>
@@ -79,12 +79,12 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-4">
                                             <h4>POV Books</h4>
-                                            <div *ngIf="books.length > 0; else noBooks">
+                                            <div *ngIf="povbooks[0]; else noPOVBooks">
                                                 <ul>
                                                     <li *ngFor="let book of povbooks"><app-base-book [book]=book></app-base-book></li>
                                                 </ul>
                                             </div>
-                                            <ng-template #noBooks>
+                                            <ng-template #noPOVBooks>
                                                 <p>No POV Books</p>
                                             </ng-template>
                                         </div>
