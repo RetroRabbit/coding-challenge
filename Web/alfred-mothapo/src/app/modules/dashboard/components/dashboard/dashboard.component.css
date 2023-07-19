@@ -1,0 +1,11 @@
+.container {
+    margin: 50px
+}
+
+.paginator{
+    margin-right: 10px
+}
+
+.text-right{
+    text-align: end !important;
+}
