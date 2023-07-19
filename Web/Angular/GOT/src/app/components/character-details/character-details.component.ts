@@ -29,10 +29,13 @@ export class CharacterDetailsComponent {
     if(this.selectedCharacter.spouse){this.GetSpouse(this.selectedCharacter.spouse)}
     if(this.selectedCharacter.mother){this.GetMother(this.selectedCharacter.mother)}
     if(this.selectedCharacter.father){this.GetFather(this.selectedCharacter.father)}
+    if(this.selectedCharacter.books){this.GetBooks(this.selectedCharacter.books)}
   }
 
-  GetAllegiances(){}
-  GetBooks(){}
+  GetBooks(urls : string[]){
+    
+  }
+  GetAllegiances(){} 
   GetSpouse(url: string){
     const spouseRequest : Observable<Character>[] =[this.characterService.getCharacter(url)];
     spouseRequest.forEach(observable => {

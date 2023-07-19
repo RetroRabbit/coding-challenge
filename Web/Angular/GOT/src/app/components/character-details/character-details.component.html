@@ -167,13 +167,13 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-12 col-md-4">
-                                    <div class="row">
-                                        <div class="col-12 my-2"><label for="" class="mx-2">Lived:</label> {{ selectedCharacter.born ? selectedCharacter.born : 'Unknown' }} - {{ selectedCharacter.died ? selectedCharacter.died : 'Unknown' }}</div>
-                                        <div class="col-12 my-2" ><label for="" class="mx-2">Mother: </label> <app-character [chr]=mother></app-character></div>
-                                        <div class="col-12 my-2" ><label for="" class="mx-2">Father: </label><app-character [chr]=father></app-character></div>
-                                        <div class="col-12 my-2" ><label for="" class="mx-2">Spouse: </label><app-character [chr]=spouse></app-character></div>
-                                        <div class="col-12 my-2"><label for="" class="mx-2">Culter:</label> {{selectedCharacter.culture ? selectedCharacter.culture : 'Unknown'}}</div>
-                                        <div class="col-12 my-2"><label for="" class="mx-2">Gender: </label>  {{selectedCharacter.gender ? selectedCharacter.gender : 'Unknown'}}</div>
+                                    <div class="row px-2">
+                                        <div class="col-12 my-2"><label for="">Lived:</label> {{ selectedCharacter.born ? selectedCharacter.born : 'Unknown' }} - {{ selectedCharacter.died ? selectedCharacter.died : 'Unknown' }}</div>
+                                        <div class="col-12 my-2" ><label for="">Mother: </label> <app-character [chr]=mother></app-character></div>
+                                        <div class="col-12 my-2" ><label for="">Father: </label><app-character [chr]=father></app-character></div>
+                                        <div class="col-12 my-2" ><label for="">Spouse: </label><app-character [chr]=spouse></app-character></div>
+                                        <div class="col-12 my-2"><label for="">Culter:</label> {{selectedCharacter.culture ? selectedCharacter.culture : 'Unknown'}}</div>
+                                        <div class="col-12 my-2"><label for="">Gender: </label>  {{selectedCharacter.gender ? selectedCharacter.gender : 'Unknown'}}</div>
                                         <div class="col-12 my-2">
                                             <label class="mx-2">Played By</label>
                                             <div *ngIf="selectedCharacter.tvSeries[0]; else noSeries">
@@ -237,7 +237,7 @@
                                             <h4>POV Books</h4>
                                             <div *ngIf="books.length > 0; else noBooks">
                                                 <ul>
-                                                    <li *ngFor="let book of povbooks"><app-book></app-book></li>
+                                                    <li *ngFor="let book of povbooks"><app-base-book [book]=book></app-base-book></li>
                                                 </ul>
                                             </div>
                                             <ng-template #noBooks>

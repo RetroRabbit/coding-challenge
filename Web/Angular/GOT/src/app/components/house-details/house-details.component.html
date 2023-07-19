@@ -268,11 +268,16 @@
                       <h5 class="card-header">
                         Sworn Members
                       </h5>
+                      <div *ngIf="swornMembers[0]; else noSwornMembers">
                       <div class="card-body">
-                        <div class="col-md-4" *ngFor="let member of swornMembers">
-                          <app-character [chr]="member"></app-character>
+                          <div class="col-md-4" *ngFor="let member of swornMembers">
+                            <app-character [chr]="member"></app-character>
+                          </div>
                         </div>
                       </div>
+                      <ng-template #noSwornMembers>
+                        <p>No Sworn Members</p>
+                      </ng-template>
                     </div>
                   </div>
                 </div>

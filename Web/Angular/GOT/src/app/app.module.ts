@@ -24,6 +24,7 @@ import { BaseHouseComponent } from './components/base-house/base-house.component
 import { CharactersComponent } from './components/characters/characters.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { BaseBookComponent } from './components/base-book/base-book.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     CharactersComponent,
     CharacterDetailsComponent,
     BookDetailsComponent,
+    BaseBookComponent,
   ],
   imports: [
     BrowserModule,
