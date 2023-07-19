@@ -19,10 +19,10 @@ export const initialState: BookState = {
 export const bookReducer = createReducer(
   initialState,
   on(BookActions.getBook, (state, { bookId }) => {
-    const selectedBook = state.books.find(house => house.name === bookId);
+    const selectedBook = state.books.find(book => book.isbn === bookId);
     return {
       ...state,
-      house: selectedBook || null,
+      book: selectedBook || null,
       loading: true
     };
   }),

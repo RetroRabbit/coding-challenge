@@ -20,8 +20,8 @@ export class BookComponent {
       this.books = state.books;
     });
   }
-  SelectedHouse(bookName: string){
-    this.store.dispatch(getBook({ bookId: bookName }));
+  SelectedBook(isbn: string){
+    this.store.dispatch(getBook({ bookId: isbn }));
     this.router.navigate(['/BookDetails/']);
   }
 
@@ -36,7 +36,7 @@ export class BookComponent {
   }
 
   ShowNext(){
-    if(BookComponent.currentPage < 213){
+    if(BookComponent.currentPage < 2){
       BookComponent.currentPage += 1;
     }else{
       BookComponent.currentPage = 213

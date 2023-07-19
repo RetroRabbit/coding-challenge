@@ -1,1 +1,104 @@
-<p>book-details works!</p>
+<div class="container mt-4">
+
+    <div class="row" *ngIf="selectedBook; else Loading">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h1 class="card-title">{{selectedBook.name ? selectedBook.name : 'Nameless'}} </h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="row px-2">
+                                        <div class="col-12 my-2"><label class="mx-2" for="">ISBN:</label> {{
+                                            selectedBook.isbn ?
+                                            selectedBook.isbn : 'Unknown' }}</div>
+                                        <div class="col-12 my-2"><label class="mx-2" for="">Number of Pages:</label>
+                                            {{selectedBook.numberOfPages ? selectedBook.numberOfPages : 'Unknown' }}
+                                        </div>
+                                        <div class="col-12 my-2"><label class="mx-2" for="">Publisher:
+                                            </label>{{selectedBook.publisher ? selectedBook.publisher : 'Unknown' }}
+                                        </div>
+                                        <div class="col-12 my-2"><label class="mx-2" for="">Country:</label>
+                                            {{selectedBook.country ?
+                                            selectedBook.country : 'Unknown'}}</div>
+                                        <div class="col-12 my-2"><label class="mx-2" for="">Media Type: </label>
+                                            {{selectedBook.mediaType ? selectedBook.mediaType : 'Unknown'}}</div>
+                                        <div class="col-12 my-2"><label class="mx-2" for="">Released: </label>
+                                            {{selectedBook.released ? FormatDate(selectedBook.released) : 'Unknown'}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-8">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+                                            <h4>Authors</h4>
+                                            <div *ngIf="selectedBook.authors[0]; else noAuthors">
+                                                <ul>
+                                                    <li *ngFor="let author of selectedBook.authors">{{author}}</li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noAuthors>
+                                                <p>Unknown authors</p>
+                                            </ng-template>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="my-2">
+                                                <h5 class="card-header">
+                                                    POV Characters
+                                                </h5>
+                                                <div *ngIf="povCharacters[0]; else noPOVCharacters">
+                                                    <div class="card-body">
+                                                        <div class="col-md-4" *ngFor="let character of povCharacters">
+                                                            <app-character [chr]="character"></app-character>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ng-template #noPOVCharacters>
+                                                    <p>No POV Characters</p>
+                                                </ng-template>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="my-2">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <h5>
+                                                        Characters
+                                                    </h5>
+                                                </div>
+                                                <div class="offset-8 col-1">
+
+                                                    <button [disabled]=characters[0] class="btn btn-dark" (click)="LoadCharacters()">Load</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="characters[0]; else noCharacters">
+                                            <div class="card-body">
+                                                <div class="col-md-4" *ngFor="let character of characters">
+                                                    <app-character [chr]="character"></app-character>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ng-template #noCharacters>
+                                            <p>Select the <i>Load</i> button to fetch them. If you still see this message, there aren't any characters.</p>
+                                        </ng-template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #Loading>
+        <h1>Retrieving Book Details</h1>
+    </ng-template>
+</div>

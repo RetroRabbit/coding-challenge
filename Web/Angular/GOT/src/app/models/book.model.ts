@@ -1,8 +1,8 @@
 import { Character } from "./character.model";
 
 export interface Book {
-    book: Book | undefined;
-    books: Book[];
+    book: Book,
+    books: Book[],
     url: string,
     name: string,
     isbn: string,

@@ -1,0 +1,14 @@
+.card-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card-body .col-md-4 {
+    flex-basis: 33.33%;
+    max-width: 33.33%;
+  }
+  
+  label{
+    font-size:larger;
+    font-weight: bolder;
+}
