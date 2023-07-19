@@ -16,10 +16,8 @@ export class HouseComponent  {
   static currentPage = 1;
   constructor(private store: Store<{house : House}>, private router : Router){}
   ngOnInit() {
-    // this.store.dispatch(getAllHouses());
     this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
     this.store.select('house').subscribe(state => {
-      // this.house = state.house;
       this.houses = state.houses;
     });
   }

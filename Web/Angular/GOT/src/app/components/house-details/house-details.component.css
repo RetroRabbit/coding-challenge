@@ -53,3 +53,7 @@
     max-width: 33.33%;
   }
   
+  label{
+    font-size:larger;
+    font-weight: bolder;
+}

@@ -1,6 +1,6 @@
 <div *ngIf="character; else noCharacter">
-    <h6>{{character.name}} : {{character.gender}} -  {{character.culture ? character.culture : 'culture not specified' }}</h6>
+    <p>{{character.name}} : {{character.gender ? character.gender : 'Unknown gender'}} -  {{character.culture ? character.culture : 'Unknown culture' }}</p>
 </div>
 <ng-template #noCharacter>
-    <h6>No character provided</h6>
+    <p>Unknown</p>
 </ng-template>

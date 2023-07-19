@@ -23,6 +23,7 @@ import { HouseDetailsComponent } from './components/house-details/house-details.
 import { BaseHouseComponent } from './components/base-house/base-house.component';
 import { CharactersComponent } from './components/characters/characters.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CharacterDetailsComponent } from './components/character-details/charac
     BaseHouseComponent,
     CharactersComponent,
     CharacterDetailsComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,

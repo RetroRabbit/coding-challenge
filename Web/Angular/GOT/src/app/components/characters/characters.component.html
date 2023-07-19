@@ -20,7 +20,7 @@
     
 
     <div class="row" *ngIf="characters;else isLoading">
-        <div *ngFor="let character of characters;let i = index" class="col-md-3 my-2" (click)="SelectCharacter(character.url)">
+        <div *ngFor="let character of characters;let i = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 my-2" (click)="SelectCharacter(character.url)">
             <div class="card">
                 <div class="card-header text-center">
                     <h4 class="card-title">{{character.name ?  character.name : 'Nameless'}}</h4>
@@ -30,18 +30,18 @@
                         <div class="col-md-6">
 
                             <h4 for="">Gender: </h4>
-                            <h5>{{character.gender ? character.gender : 'Gender not specified'}}</h5>
+                            <h6>{{character.gender ? character.gender : 'Gender not specified'}}</h6>
                         </div>
                         <div class="col-md-6">
 
-                            <h4>Culter: </h4>
-                            <h5>{{character.culture ? character.culture : 'Culture not specified'}}</h5>
+                            <h4>Culture: </h4>
+                            <h6>{{character.culture ? character.culture : 'Culture not specified'}}</h6>
                         </div>
                         <hr>
                         <div class="col-xs-12">
 
                             <h4 for="">Born:</h4>
-                            <h5> {{character.born ? character.born : 'Date not specified'}}</h5>
+                            <h6> {{character.born ? character.born : 'Date not specified'}}</h6>
                         </div>
                     </div>
                 </div>

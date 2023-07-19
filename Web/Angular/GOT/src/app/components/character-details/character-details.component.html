@@ -1,1 +1,281 @@
-<p>{{selectedCharacter.name}}</p>
+<div class="container mt-4">
+    
+    <div class="row" *ngIf="selectedCharacter; else Loading">
+        <div class="col-md-12">
+            <div class="row">
+                <!-- <div class="col-md-4">
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Gender
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{ selectedCharacter.gender }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Culture
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                
+                                {{selectedCharacter.culture ? selectedCharacter.culture : 'Not specified' }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Born - Died
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                
+                                {{selectedCharacter.born ? selectedCharacter.born : 'Not specified'}} - {{selectedCharacter.died ? selectedCharacter.died : 'Not specified'}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Died
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{selectedCharacter.died ? selectedCharacter.died : 'Date not specified'}}
+                            </p>
+                        </div>
+                    </div
+                </div>
+                <div class="col-md-4">
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Titles
+                        </h5>
+                        <div class="card-body">
+                            <ul class="card-text">
+                                <li *ngFor="let title of selectedCharacter.titles">{{title}}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Father and Mother
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+
+                                {{ selectedCharacter.father ? selectedCharacter.father : 'Father not specified'}} :  {{ selectedCharacter.mother ? selectedCharacter.mother : 'Mother not specified'}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Aliases
+                        </h5>
+                        <div class="card-body">
+                            <ul class="card-text">
+                                <li *ngFor="let alias of selectedCharacter.aliases">{{alias}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                   <div class="card my-2">
+                        <h5 class="card-header">
+                            Mother
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{ selectedCharacter.mother ? selectedCharacter.mother : 'Mother not specified'}}
+                            </p>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-4">
+
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Spouse
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                               
+                                {{ selectedCharacter.spouse ? selectedCharacter.spouse : 'Spouse not specified'}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Allegiances
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <app-base-house *ngFor="let house of allegiances" [baseHouse]=house></app-base-house>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Books
+                        </h5>
+                        <div class="card-body">
+                            <ul class="card-text">
+                                // add property binding
+                                <li *ngFor="let book of books"><app-book></app-book></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            POV Books
+                        </h5>
+                        <div class="card-body">
+                            <ul class="card-text">
+                                // add property binding
+                                <li *ngFor="let book of povbooks"><app-book></app-book></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            TV Series
+                        </h5>
+                        <div class="card-body">
+                            <ul class="card-text">
+                                <li *ngFor="let serie of selectedCharacter.tvSeries">{{serie}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <h5 class="card-header">
+                            Played By:
+                        </h5>
+                        <div class="card-body">
+                            <ul class="card-text">
+                                // add property binding
+                                <li *ngFor="let actor of selectedCharacter.playedBy">{{actor}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h1 class="card-title">{{selectedCharacter.name ? selectedCharacter.name : 'Nameless'}} </h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="row">
+                                        <div class="col-12 my-2"><label for="" class="mx-2">Lived:</label> {{ selectedCharacter.born ? selectedCharacter.born : 'Unknown' }} - {{ selectedCharacter.died ? selectedCharacter.died : 'Unknown' }}</div>
+                                        <div class="col-12 my-2" ><label for="" class="mx-2">Mother: </label> <app-character [chr]=mother></app-character></div>
+                                        <div class="col-12 my-2" ><label for="" class="mx-2">Father: </label><app-character [chr]=father></app-character></div>
+                                        <div class="col-12 my-2" ><label for="" class="mx-2">Spouse: </label><app-character [chr]=spouse></app-character></div>
+                                        <div class="col-12 my-2"><label for="" class="mx-2">Culter:</label> {{selectedCharacter.culture ? selectedCharacter.culture : 'Unknown'}}</div>
+                                        <div class="col-12 my-2"><label for="" class="mx-2">Gender: </label>  {{selectedCharacter.gender ? selectedCharacter.gender : 'Unknown'}}</div>
+                                        <div class="col-12 my-2">
+                                            <label class="mx-2">Played By</label>
+                                            <div *ngIf="selectedCharacter.tvSeries[0]; else noSeries">
+                                                <ul>
+                                                    <li *ngFor="let actor of selectedCharacter.playedBy">{{actor}}</li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noSeries>
+                                                <p>Actors unknown</p>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-8">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+                                            <h4>Titles</h4>
+                                            <div *ngIf="selectedCharacter.titles.length > 0; else noTitles">
+                                                <ul>
+                                                    <li *ngFor="let title of selectedCharacter.titles">{{title}}</li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noTitles>
+                                                <p>No titles</p>
+                                            </ng-template>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+                                            <h4>Aliases</h4>
+                                            <div *ngIf="selectedCharacter.aliases.length > 0; else noAliases">
+                                                <ul>
+                                                    <li *ngFor="let alias of selectedCharacter.aliases">{{alias}}</li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noAliases>
+                                                <p>No Aliases</p>
+                                            </ng-template>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+                                            <h4>Allegiances</h4>
+                                            <div *ngIf="allegiances.length > 0; else noAllegiances">
+                                                <ul>
+                                                    <li *ngFor="let ally of allegiances"><app-base-house></app-base-house></li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noAllegiances>
+                                                <p>No Allegiances</p>
+                                            </ng-template>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+                                            <h4>Books</h4>
+                                            <div *ngIf="books.length > 0; else noBooks">
+                                                <ul>
+                                                    <li *ngFor="let book of books"><app-book></app-book></li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noBooks>
+                                                <p>No Books</p>
+                                            </ng-template>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+                                            <h4>POV Books</h4>
+                                            <div *ngIf="books.length > 0; else noBooks">
+                                                <ul>
+                                                    <li *ngFor="let book of povbooks"><app-book></app-book></li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noBooks>
+                                                <p>No POV Books</p>
+                                            </ng-template>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+                                            <h4>Starred in</h4>
+                                            <div *ngIf="selectedCharacter.tvSeries.length > 0; else noSeries">
+                                                <ul>
+                                                    <li *ngFor="let season of selectedCharacter.tvSeries">{{season}}</li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noSeries>
+                                                <p>No TV Series</p>
+                                            </ng-template>
+                                        </div>
+                                        <!-- <div class="col-xs-12 col-sm-6 col-md-4">
+                                            <h4>Played By</h4>
+                                            <div *ngIf="selectedCharacter.tvSeries.length > 0; else noSeries">
+                                                <ul>
+                                                    <li *ngFor="let actor of selectedCharacter.playedBy">{{actor}}</li>
+                                                </ul>
+                                            </div>
+                                            <ng-template #noSeries>
+                                                <p>Actor unknown</p>
+                                            </ng-template>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #Loading>
+        <h1>Retrieving Character Details</h1>
+    </ng-template>
+</div>

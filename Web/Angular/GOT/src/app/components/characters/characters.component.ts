@@ -15,10 +15,8 @@ export class CharactersComponent {
   characters : Character[] = []
   constructor(private store: Store<{character : Character}>, private router : Router){}
   ngOnInit() {
-    // this.store.dispatch(getAllHouses());
     this.store.dispatch(getAllCharacters({ pageNumber: CharactersComponent.currentPage}));
     this.store.select('character').subscribe(state => {
-      // this.house = state.house;
       this.characters = state.characters;
     });
     console.log(this.characters)

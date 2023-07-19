@@ -22,10 +22,10 @@ export class HouseDetailsComponent {
   cadetBranches : House[] = [];
   overlord !: House;
   hascurrentLord = false;
-  
+  houseWords : string[] = [];
   currentCharacter$ = this.store.select('character');
 
-  constructor(private store: Store<{ house: House, character: Character }>, private location: Location, private Cservice: CharacterService, private houseService: HouseService) { }
+  constructor(private store: Store<{ house: House, character: Character }>, private location: Location, private characterService: CharacterService, private houseService: HouseService) { }
   ngOnInit() {
     this.swornMembers = []
     this.store.select('house').subscribe(state => {
@@ -44,17 +44,16 @@ export class HouseDetailsComponent {
    
   GetSwornMembers(swornMembers: string[]) {
     const swornMemberRequests: Observable<Character>[] = swornMembers.map(endpoint => {
-      return this.Cservice.getCharacter(endpoint);
+      return this.characterService.getCharacter(endpoint);
     });
     swornMemberRequests.forEach(observable => {
       observable.subscribe(character => {
         this.swornMembers.push(character)
       });
     });
-    console.log(this.swornMembers);
   } 
   GetFounder(url : string){
-    const founderRequest: Observable<Character>[] = [this.Cservice.getCharacter(url)];
+    const founderRequest: Observable<Character>[] = [this.characterService.getCharacter(url)];
     founderRequest.forEach(observable => {
       observable.subscribe(character => {
        this.founder = character;
@@ -62,7 +61,7 @@ export class HouseDetailsComponent {
     });
   }
   GetHeir(url : string){
-    const founderRequest: Observable<Character>[] = [this.Cservice.getCharacter(url)];
+    const founderRequest: Observable<Character>[] = [this.characterService.getCharacter(url)];
     founderRequest.forEach(observable => {
       observable.subscribe(character => {
        this.heir = character;

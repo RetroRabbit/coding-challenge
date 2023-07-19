@@ -1,22 +1,30 @@
 .nav-link {
-    font-family: 'Game of Thrones', sans-serif;
-  }
+  font-family: 'Game of Thrones', sans-serif;
+}
 
-  /* Change color of link texts */
-  .nav-link {
-    color: white;
-  }
+/* Change color of link texts */
+.nav-link {
+  color: white;
+}
 
-  /* Change color of link texts on hover */
-  .nav-link:hover {
-    color: gold;
-  }
+/* Change color of link texts on hover */
+.nav-link:hover {
+  color: gold;
+}
 
-  /* Change font size of link texts */
-  .nav-link {
-    font-size: 20px;
-  }
+/* Change font size of link texts */
+.nav-link {
+  font-size: 20px;
+}
 
-  img{
-    color:white
-  }
+img {
+  color: white
+}
+
+.nav-item {
+  color: white;
+}
+
+.nav-item.selected {
+  color: gold;
+}
