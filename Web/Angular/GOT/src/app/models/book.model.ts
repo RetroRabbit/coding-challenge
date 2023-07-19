@@ -12,6 +12,6 @@ export interface Book {
     country: string,
     mediaType: string,
     released: string,
-    characters: Character[],
-    povCharacters: Character[],
+    characters: string[],
+    povCharacters: string[],
 }

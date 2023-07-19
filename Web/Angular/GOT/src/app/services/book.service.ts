@@ -12,7 +12,7 @@ export class BookService {
   constructor(private http: HttpClient) {}
 
   getBook(bookId: string): Observable<Book> {
-    const url = `${this.baseUrl}/${bookId}`;
+    const url = `${bookId}`;
     return this.http.get<Book>(url);
   }
 

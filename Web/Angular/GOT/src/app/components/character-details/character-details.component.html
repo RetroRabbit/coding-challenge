@@ -70,7 +70,7 @@
                                             <h4>Books</h4>
                                             <div *ngIf="books.length > 0; else noBooks">
                                                 <ul>
-                                                    <li *ngFor="let book of books"><app-book></app-book></li>
+                                                    <li *ngFor="let book of books"><app-base-book [book]=book></app-base-book></li>
                                                 </ul>
                                             </div>
                                             <ng-template #noBooks>
