@@ -19,11 +19,9 @@ export class CharactersComponent {
     this.store.select('character').subscribe(state => {
       this.characters = state.characters;
     });
-    console.log(this.characters)
   }
 
   SelectCharacter(characterUrl: string){
-    console.log()
     this.store.dispatch(getCharacter({ characterId: characterUrl }));
     this.router.navigate(['/CharacterDetails/']);
   }

@@ -19,9 +19,6 @@ export class BookComponent {
       this.book = state.book;
       this.books = state.books;
     });
-
-    // Dispatch actions to get book and all books
-    // this.store.dispatch(getBook({ bookId: '1' }));
     this.store.dispatch(getAllBooks());
   }
   getBook(bookId: any) {

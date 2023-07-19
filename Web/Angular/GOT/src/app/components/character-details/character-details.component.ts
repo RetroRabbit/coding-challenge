@@ -24,7 +24,6 @@ export class CharacterDetailsComponent {
   ngOnInit(){
     this.store.select('character').subscribe(state => {
       this.selectedCharacter = state.character;
-      console.log(this.selectedCharacter)
     });
     if(this.selectedCharacter.spouse){this.GetSpouse(this.selectedCharacter.spouse)}
     if(this.selectedCharacter.mother){this.GetMother(this.selectedCharacter.mother)}

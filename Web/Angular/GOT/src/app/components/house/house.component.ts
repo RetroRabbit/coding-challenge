@@ -22,7 +22,6 @@ export class HouseComponent  {
     });
   }
   SelectedHouse(houseName: string){
-    console.log(houseName)
     this.store.dispatch(getHouse({ houseId: houseName }));
     this.router.navigate(['/Details/']);
   }

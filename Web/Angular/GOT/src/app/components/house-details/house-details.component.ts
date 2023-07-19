@@ -75,11 +75,9 @@ export class HouseDetailsComponent {
     });
     cadetBranchesRequst.forEach(observable => {
       observable.subscribe(character => {
-        // console.log(character);
         this.cadetBranches.push(character)
       });
     });
-    console.log(this.swornMembers);
   }
 
   GetOverLord(url : string){
