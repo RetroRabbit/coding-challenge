@@ -16,8 +16,8 @@ repositories {
 	maven {
 		url = uri("https://maven.pkg.github.com/liodali/KotlinMapster")
 		credentials {
-			username = "AWallsRR"
-			password = "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"
+			username = "{USER_NAME}"
+			password = "{TOKEN}"
 		}
 	}
 }
