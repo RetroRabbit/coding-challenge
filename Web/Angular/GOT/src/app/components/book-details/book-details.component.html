@@ -20,26 +20,26 @@
 
                                 <div class="row px-2">
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 my-2"><label
-                                            class="mx-2">ISBN:</label> {{
+                                            class="mx-2">ISBN:</label> <br> {{
                                         selectedBook.isbn ?
                                         selectedBook.isbn : 'Unknown' }}</div>
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 my-2"><label class="mx-2">Number of
-                                            Pages:</label>
+                                            Pages:</label> <br>
                                         {{selectedBook.numberOfPages ? selectedBook.numberOfPages : 'Unknown' }}
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 my-2"><label
                                             class="mx-2">Publisher:
-                                        </label>{{selectedBook.publisher ? selectedBook.publisher : 'Unknown' }}
+                                        </label> <br>{{selectedBook.publisher ? selectedBook.publisher : 'Unknown' }}
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 my-2"><label
-                                            class="mx-2">Country:</label>
+                                            class="mx-2">Country:</label> <br>
                                         {{selectedBook.country ?
                                         selectedBook.country : 'Unknown'}}</div>
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 my-2"><label class="mx-2">Media
-                                            Type: </label>
+                                            Type: </label> <br>
                                         {{selectedBook.mediaType ? selectedBook.mediaType : 'Unknown'}}</div>
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 my-2"><label class="mx-2">Released:
-                                        </label>
+                                        </label> <br>
                                         {{selectedBook.released ? FormatDate(selectedBook.released) : 'Unknown'}}
                                     </div>
                                     <div class="col-xs-12 mb-2">
@@ -63,7 +63,8 @@
                                 <div *ngIf="povCharacters[0]; else noPOVCharacters">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-4" *ngFor="let character of povCharacters">
+                                            <div class="col-xs-12 col-sm-12 col-md-4"
+                                                *ngFor="let character of povCharacters">
                                                 <app-character [chr]="character"></app-character>
                                             </div>
                                         </div>
@@ -86,7 +87,8 @@
                                     <div class="card-body">
                                         <div class="container">
                                             <div class="row">
-                                                <div class="col-xs-12 col-sm-12 col-md-4" *ngFor="let character of characters">
+                                                <div class="col-xs-12 col-sm-12 col-md-4"
+                                                    *ngFor="let character of characters">
                                                     <app-character [chr]="character"></app-character>
                                                 </div>
                                             </div>

@@ -18,28 +18,28 @@
             <div class="col-sm-12 col-md-12 col-lg-12 mb-4" id="left-column">
               <div class="container">
                 <div class="row px-2">
-                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Region:</label>
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Region:</label> <br>
                     <h6>{{ selectedHouse.region ?
                       selectedHouse.region : 'Unknown' }} </h6>
                   </div>
-                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Heir: </label> <app-character [chr]=heir></app-character></div>
-                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Founder: </label><app-character [chr]=founder></app-character></div>
-                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Current Lord: </label><app-character
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Heir: </label> <br> <app-character [chr]=heir></app-character></div>
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Founder: </label> <br><app-character [chr]=founder></app-character></div>
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Current Lord: </label> <br><app-character
                       [chr]=currentLord></app-character>
                   </div>
-                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Overlord: </label><app-base-house
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Overlord: </label> <br><app-base-house
                     [baseHouse]=overlord></app-base-house>
                   </div>
-                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Founded: </label> {{selectedHouse.founded ?
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Founded: </label> <br> {{selectedHouse.founded ?
                     selectedHouse.founded :
                     'Unknown'}}</div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Died Out: </label> {{selectedHouse.diedOut ?
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>Died Out: </label> <br> {{selectedHouse.diedOut ?
                       selectedHouse.diedOut :
                       'Unknown'}}</div>
-                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>House Words: </label> {{selectedHouse.words ?
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 my-2"><label>House Words: </label> <br> {{selectedHouse.words ?
                         selectedHouse.words :
                         'Unknown'}}</div>
-                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 my-2"><label>Coat of Arms:</label> {{selectedHouse.coatOfArms ?
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 my-2"><label>Coat of Arms:</label> <br> {{selectedHouse.coatOfArms ?
                         selectedHouse.coatOfArms : 'Unknown'}}</div>
                 </div>
               </div>
