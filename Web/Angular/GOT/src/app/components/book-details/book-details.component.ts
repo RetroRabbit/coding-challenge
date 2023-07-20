@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -16,7 +17,7 @@ export class BookDetailsComponent {
   povCharacters: Character[] = [];
   selectedBook !: Book;
 
-  constructor(private store: Store<{ book: Book }>, private characterService: CharacterService, private bookService: BookService) { }
+  constructor(private store: Store<{ book: Book }>,private location: Location, private characterService: CharacterService, private bookService: BookService) { }
   ngOnInit() {
     this.store.select('book').subscribe(state => {
       this.selectedBook = state.book;
@@ -50,5 +51,9 @@ export class BookDetailsComponent {
         this.povCharacters.push(character)
       });
     });
+  }
+  GoBack() {
+    this.location.back();
+
   }
 }
