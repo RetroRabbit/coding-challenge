@@ -42,9 +42,8 @@ export class DashboardComponent implements OnInit{
             this.houses = results;
           }
           this.loading = false;
-        } else {
-          this.loading = false;
         }
+        this.loading = false;
       },
       error: (error) =>{
         this.showError(error.message);
