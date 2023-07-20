@@ -8,6 +8,8 @@ import {CardModule} from 'primeng/card';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TableModule } from 'primeng/table';
 import { CharacterModule } from '../character/character.module';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -21,8 +23,10 @@ import { CharacterModule } from '../character/character.module';
     CardModule,
     FieldsetModule,
     TableModule,
-    CharacterModule
+    CharacterModule,
+    ToastModule
   ],
-  exports: [HouseInfoComponent]
+  exports: [HouseInfoComponent],
+  providers: [MessageService]
 })
 export class HousesModule { }

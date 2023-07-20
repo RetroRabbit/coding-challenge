@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { take } from 'rxjs';
 import { Character } from 'src/app/models/character';
 import { House } from 'src/app/models/house';
@@ -20,7 +21,8 @@ export class HouseInfoComponent implements OnInit{
 
   constructor(
     private houseService: HouseService,
-    private characterService: CharacterService, 
+    private characterService: CharacterService,
+    private messageService: MessageService, 
     private route: ActivatedRoute){}
 
   ngOnInit() {
@@ -48,8 +50,12 @@ export class HouseInfoComponent implements OnInit{
         }
       },
       error: (err)=>{
-
+        this.showError(err.message);
       }    
     })
   }
+
+  showError(errorMessage: string) {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: `An error occured, details: ${errorMessage}` });
+  } 
 }

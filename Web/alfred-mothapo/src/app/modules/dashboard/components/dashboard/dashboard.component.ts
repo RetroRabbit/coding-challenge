@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { take } from 'rxjs';
 import { House } from 'src/app/models/house';
 import { HouseService } from 'src/app/services/house/house.service';
@@ -19,7 +20,10 @@ export class DashboardComponent implements OnInit{
   public disablePrevious: boolean = false;
   public searchValue: string = "";
 
-  constructor(private houseService: HouseService, private router: Router){}
+  constructor(
+    private houseService: HouseService, 
+    private messageService: MessageService,
+    private router: Router, ){}
 
   ngOnInit(): void {
     this.getHouses();
@@ -41,6 +45,7 @@ export class DashboardComponent implements OnInit{
         }
       },
       error: (error) =>{
+        this.showError(error.message);
         this.loading = false;
       }
     })
@@ -53,7 +58,10 @@ export class DashboardComponent implements OnInit{
 
   viewHouseDetails(url: string){
     var urlSplit = url.split("/");
-      console.log(urlSplit[urlSplit.length-1]);
     this.router.navigate([`/house/house-info/${urlSplit[urlSplit.length-1]}`])
   }
+
+  showError(errorMessage: string) {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: `An error occured, details: ${errorMessage}` });
+  } 
 }

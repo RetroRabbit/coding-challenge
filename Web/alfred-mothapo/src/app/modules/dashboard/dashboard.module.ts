@@ -9,6 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -20,8 +22,10 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     TableModule,
     FormsModule,
-    InputTextModule
+    InputTextModule,
+    ToastModule
   ],
-  exports: [DashboardComponent]
+  exports: [DashboardComponent],
+  providers: [MessageService]
 })
 export class DashboardModule { }
