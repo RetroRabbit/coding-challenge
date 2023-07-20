@@ -1,0 +1,16 @@
+<p-fieldset>
+    <ng-template pTemplate="header">
+        <div class="flex align-items-center text-primary">
+            <span class="pi pi-user mr-2"></span>
+            <span class="font-bold text-lg">{{title}}</span>
+        </div>
+    </ng-template>
+    <p><strong>Name: </strong>{{character?.name}}</p>
+    <p><strong>Gender: </strong>{{character?.gender}}</p>
+    <p><strong>Born: </strong>{{character?.born}}</p>
+    <p><strong>Titles: </strong></p>
+    <ul *ngFor="let title of character?.titles">
+        <li>{{title}}</li>
+    </ul>
+    <p><a routerLink="/books"><strong>Books: </strong>{{character?.books?.length}}</a></p>
+</p-fieldset>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { House } from 'src/app/models/house';
 import { HouseService } from 'src/app/services/house/house.service';
@@ -18,7 +19,7 @@ export class DashboardComponent implements OnInit{
   public disablePrevious: boolean = false;
   public searchValue: string = "";
 
-  constructor(private houseService: HouseService){}
+  constructor(private houseService: HouseService, private router: Router){}
 
   ngOnInit(): void {
     this.getHouses();
@@ -48,5 +49,11 @@ export class DashboardComponent implements OnInit{
   next(){
     this.pageNumber +=1;
     this.getHouses();
+  }
+
+  viewHouseDetails(url: string){
+    var urlSplit = url.split("/");
+      console.log(urlSplit[urlSplit.length-1]);
+    this.router.navigate([`/house/house-info/${urlSplit[urlSplit.length-1]}`])
   }
 }

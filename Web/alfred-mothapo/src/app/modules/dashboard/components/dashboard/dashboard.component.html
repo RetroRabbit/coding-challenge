@@ -35,7 +35,7 @@
             <td>{{house.coatOfArms}}</td>
             <td>{{house.swornMembers?.length}}</td>
             <td>{{house.region}}</td>
-            <td><p-button icon="pi pi-arrow-circle-right" label="View" styleClass="p-button-secondary"></p-button></td>
+            <td><p-button (onClick)="viewHouseDetails(house.url)" icon="pi pi-arrow-circle-right" label="View" styleClass="p-button-secondary"></p-button></td>
         </tr>
     </ng-template>
 </p-table>
