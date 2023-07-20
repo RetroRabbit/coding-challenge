@@ -13,7 +13,7 @@ import { HouseService } from 'src/app/services/house/house.service';
 export class DashboardComponent implements OnInit{
 
   private pageNumber: number = 1;
-  private pageSize: number = 100;
+  private pageSize: number = 50;
   public houses: Array<House> = new Array<House>();
   public loading: boolean = false;
   public disableNext: boolean = false;
@@ -41,6 +41,8 @@ export class DashboardComponent implements OnInit{
           else {
             this.houses = results;
           }
+          this.loading = false;
+        } else {
           this.loading = false;
         }
       },

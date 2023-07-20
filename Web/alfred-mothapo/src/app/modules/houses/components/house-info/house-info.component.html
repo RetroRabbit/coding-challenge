@@ -4,14 +4,14 @@
     <h2 class="text-center"><span class="pi pi-home"></span> {{currentHouse?.name}}</h2>
                 <p class="text-center">{{currentHouse?.coatOfArms}}</p>
     <div class="grid">
-        <div class="col-6">
+        <div class="col" *ngIf="currentHouse?.currentLord">
             <p-card>
                 <app-character [characterUrl]="currentHouse?.currentLord" title="Current Lord" *ngIf="currentHouse?.currentLord"></app-character>
             </p-card>
         </div>
-        <div class="col-6">
+        <div class="col" *ngIf="currentHouse?.heir">
             <p-card>
-                <app-character [characterUrl]="currentHouse?.heir" title="Heir" *ngIf="currentHouse?.heir"></app-character>
+                <app-character [characterUrl]="currentHouse?.heir" title="Heir"></app-character>
             </p-card>
         </div>
     </div>
@@ -22,8 +22,14 @@
                 <h2 ><span class="pi pi-users"></span> Sworn Members</h2>
                 <p>A list of Sworn members of the house</p>
 
-                <p-table [value]="swornMembers" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
-                    <ng-template pTemplate="header">
+                <p-table *ngIf="!loading && swornMembers.length > 0"
+                    [value]="swornMembers" 
+                    [tableStyle]="{'min-width': '60rem'}" 
+                    styleClass="p-datatable-gridlines" 
+                    [paginator]="true"
+                    [rows]="5"
+                    [rowsPerPageOptions]="[5,10, 25, 50]">
+                <ng-template pTemplate="header">
                         <tr>
                             <th>Name</th>
                             <th>Gender</th>

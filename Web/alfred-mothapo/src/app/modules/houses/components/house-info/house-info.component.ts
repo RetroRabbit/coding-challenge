@@ -18,6 +18,7 @@ export class HouseInfoComponent implements OnInit{
   public currentHouse: House | undefined;
   public houseId: number = 0;
   public swornMembers: Array<Character> = new Array<Character>();
+  public loading: boolean = false;
 
   constructor(
     private houseService: HouseService,
@@ -33,6 +34,7 @@ export class HouseInfoComponent implements OnInit{
   } 
 
   getHouseDetails(){
+    this.loading = true;
     this.houseService.getHouseDetails(this.houseId)
     .pipe(take(1)).subscribe({
       next: (results) =>{
@@ -44,12 +46,16 @@ export class HouseInfoComponent implements OnInit{
             .pipe(take(1)).subscribe({
               next: (resp)=>{
                 this.swornMembers.push(resp);
+                this.loading = false;
               }
             })
           });
+        } else {
+          this.loading = false;
         }
       },
       error: (err)=>{
+        this.loading = false;
         this.showError(err.message);
       }    
     })

@@ -4,6 +4,7 @@ import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -16,6 +17,7 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     SidebarModule,
     ButtonModule,
+    RouterModule
   ],
   exports: [SidebarComponent, NavbarComponent]
 })

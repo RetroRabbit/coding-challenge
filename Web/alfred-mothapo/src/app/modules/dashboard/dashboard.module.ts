@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -23,7 +24,8 @@ import { MessageService } from 'primeng/api';
     TableModule,
     FormsModule,
     InputTextModule,
-    ToastModule
+    ToastModule,
+    ProgressBarModule
   ],
   exports: [DashboardComponent],
   providers: [MessageService]

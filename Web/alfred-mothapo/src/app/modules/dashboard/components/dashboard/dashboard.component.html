@@ -1,16 +1,9 @@
 <div class="container">
     <app-sidebar></app-sidebar>
     <br> 
-<p-card header="Manage and view Houses">
-    <div class="grid">
-        <div class="col-12">
-            <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input pInputText  type="text" placeholder="Search house by name, region.." pInputText [(ngModel)]="searchValue" />
-            </span>
-        </div>
-    </div>
-    <p-table 
+<p-card header="Manage and View Houses">
+    <p-progressBar *ngIf="loading" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+    <p-table
     [value]="houses" 
     [tableStyle]="{'min-width': '60rem'}" 
     styleClass="p-datatable-gridlines" 
@@ -18,8 +11,8 @@
     [showCurrentPageReport]="true"
     [rows]="5"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[5,10, 25, 50]"
->
+    [rowsPerPageOptions]="[5,10, 25, 50]">
+    
     <ng-template pTemplate="header">
         <tr>
             <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
@@ -35,12 +28,12 @@
             <td>{{house.coatOfArms}}</td>
             <td>{{house.swornMembers?.length}}</td>
             <td>{{house.region}}</td>
-            <td><p-button (onClick)="viewHouseDetails(house.url)" icon="pi pi-arrow-circle-right" label="View" styleClass="p-button-secondary"></p-button></td>
+            <td><p-button (onClick)="viewHouseDetails(house.url)" icon="pi pi-arrow-circle-right" label="View" styleClass="p-button-secondary" [loading]="loading" ></p-button></td>
         </tr>
     </ng-template>
 </p-table>
     <br>
-    <p-button (click)="next()" icon="pi pi-download" [disabled]="loading" label="Load more" class="paginator"></p-button>
+    <p-button (click)="next()" icon="pi pi-download" [disabled]="loading" [loading]="loading"  label="Load more" class="paginator"></p-button>
 </p-card>
 <p-toast></p-toast>
 </div>

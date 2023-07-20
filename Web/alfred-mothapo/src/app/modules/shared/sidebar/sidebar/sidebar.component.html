@@ -1,7 +1,9 @@
 <div class="card">
     <p-sidebar [visible]="sidebarVisible" (onHide)="sidebarVisible = false">
         <ng-template pTemplate="header">Welcome</ng-template>
-        <ng-template pTemplate="content">Houses</ng-template>
+        <ng-template pTemplate="content">
+            <a [routerLink]= "['/']">Houses</a>
+        </ng-template>
 
     </p-sidebar>
     <p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
