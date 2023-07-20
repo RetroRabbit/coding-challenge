@@ -1,14 +1,24 @@
 package com.staffinghub.coding.challenges.mapping
 
 
+import com.staffinghub.coding.challenges.mapping.controllers.ArticleController
+import com.staffinghub.coding.challenges.mapping.mappers.ArticleMapper
+import com.staffinghub.coding.challenges.mapping.models.db.Article
 import com.staffinghub.coding.challenges.mapping.models.db.Image
 import com.staffinghub.coding.challenges.mapping.models.db.ImageSize
 import com.staffinghub.coding.challenges.mapping.models.db.blocks.VideoBlockType
+import com.staffinghub.coding.challenges.mapping.models.dto.ArticleDto
 import com.staffinghub.coding.challenges.mapping.models.dto.ImageDto
+import com.staffinghub.coding.challenges.mapping.repositories.ArticleRepository
+import com.staffinghub.coding.challenges.mapping.services.ArticleService
+import io.kotest.matchers.shouldBe
 import mapper.adaptTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.Mockito.`when`
+import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.util.*
 import com.staffinghub.coding.challenges.mapping.models.db.blocks.GalleryBlock as GaleryBlockDb
@@ -20,11 +30,67 @@ import com.staffinghub.coding.challenges.mapping.models.dto.blocks.ImageBlock as
 import com.staffinghub.coding.challenges.mapping.models.dto.blocks.TextBlock as TextBlockDTO
 import com.staffinghub.coding.challenges.mapping.models.dto.blocks.VideoBlock as VideoBlockDTO
 
-@ExtendWith(SpringExtension::class)
+@ExtendWith(SpringExtension::class, MockitoExtension::class)
 @SpringBootTest
 class ApplicationTests {
+
+    private lateinit var articleController: ArticleController
+
+    private lateinit var articleService: ArticleService
+
+    @MockBean
+    private lateinit var articleRepository: ArticleRepository
+
+    @MockBean
+    private lateinit var mapper: ArticleMapper
     @Test
     fun contextLoads() {
+
+    }
+    @Test
+    fun ArticleServiceTest(){
+
+        val articleId = 1001L
+
+        val article = Article(
+            id = articleId,
+            title = "Test Article",
+            description = "This is a test article",
+            author = "Test Author",
+            lastModified = Date(),
+            blocks = listOf(
+                    TextBlockDB("Test text 1", 1),
+                    CreateImageBlockDB(articleId),
+                    TextBlockDB("Test text 2", 3)
+            ).toSet()
+        )
+
+        val articleDto = ArticleDto(
+            id = articleId,
+            title = "Test Article",
+            description = "This is a test article",
+            author = "Test Author",
+            blocks = listOf(
+                    TextBlockDTO("Test text 1", 1),
+                    CreateImageBlockDTO(articleId),
+                    TextBlockDTO("Test text 2", 3)
+            )
+        )
+
+        articleService = ArticleService(mapper)
+        articleController = ArticleController(articleService)
+
+        `when`(articleRepository.findBy(articleId)).thenReturn(article)
+
+        `when`(mapper.map(article)).thenReturn(articleDto)
+
+        val result = mapper.map(article)
+        result shouldBe articleDto
+
+        val testArticle = mapper.map(articleRepository.findBy(articleId))
+        testArticle shouldBe articleDto
+
+        assert(testArticle.blocks.elementAt(0).sortIndex<=testArticle.blocks.elementAt(1).sortIndex)
     }
 
     /**
@@ -38,6 +104,7 @@ class ApplicationTests {
                 text = "Some Text for $this",
                 sortIndex = 0
         )
+
         val textBlockDto = TextBlockDTO(
                 text = "Some Text for $this",
                 sortIndex = 0
@@ -57,6 +124,7 @@ class ApplicationTests {
                 url = "https://youtu.be/myvideo",
                 sortIndex = 4
         )
+
         val videoBlockDTO = VideoBlockDTO(
                 type = VideoBlockType.YOUTUBE,
                 url = "https://youtu.be/myvideo",
@@ -73,6 +141,7 @@ class ApplicationTests {
     fun CheckImageBlockMap()
     {
         val imageBlockDB =  CreateImageBlockDB(1L)
+
         val imageBlockDTO = CreateImageBlockDTO(1L)
 
         assert(imageBlockDTO == imageBlockDB.adaptTo(imageBlockDTO::class))

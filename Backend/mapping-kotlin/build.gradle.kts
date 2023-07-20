@@ -26,6 +26,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation ("com.hamza.dali:mapster-ktx:0.4.0")
+	testImplementation ("io.kotest:kotest-property:4.0.3")
+	testImplementation ("org.mockito:mockito-core:3.+")
+	testImplementation ("org.mockito:mockito-inline:3.11.2")
 }
 
 tasks {

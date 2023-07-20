@@ -8,9 +8,9 @@ import java.util.*
 
 @Component
 class ArticleMapper {
-    fun map(article: Article?): ArticleDto {
-        val articleDto = article?.adaptTo(ArticleDto::class)
-        return articleDto!!
+    fun map(article: Article): ArticleDto {
+        val articleDto = article.adaptTo(ArticleDto::class)
+        return articleDto
     }
 
     // Not part of the challenge / Nicht Teil dieser Challenge.
