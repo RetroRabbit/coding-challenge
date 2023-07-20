@@ -21,8 +21,7 @@ export class BookComponent {
     this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
     this.store.select('book').subscribe(state => {
       this.books = state.books;
-      this.lastPage = this.pageService.bookLastPage
-      // this.FetchData();
+      this.lastPage = this.pageService.bookLastPage;
     });
   }
   SelectedBook(isbn: string){
