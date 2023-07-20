@@ -1,102 +1,111 @@
-<button (click)="GoBack()">Go Back</button>
-<div class="container-fluid">
+<div class="container-fluid mt-4">
   <div class="row" *ngIf="selectedHouse; else Loading">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header text-center">
-            <h1 class="card-title">{{selectedHouse.name ? selectedHouse.name : 'Nameless'}} </h1>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-2">
+              <button class="btn btn-light my-2" (click)="GoBack()">Go Back</button>
+            </div>
+            <div class="col-8 text-center">
+              <h1 class="card-title">{{selectedHouse.name ? selectedHouse.name : 'Nameless'}} </h1>
+            </div>
+            <div class="col-2"></div>
           </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12 col-md-4">
-                <div class="row px-2">
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4" id="left-column">
+              <div class="row px-2">
 
-                  <div class="col-12 my-2"><label>Region:</label> <h6>{{ selectedHouse.region ?
-                    selectedHouse.region : 'Unknown' }} </h6></div>
-                  <div class="col-12 my-2"><label>Heir: </label> <app-character
-                      [chr]=heir></app-character></div>
-                  <div class="col-12 my-2"><label>Founder: </label><app-character
-                      [chr]=founder></app-character></div>
-                  <div class="col-12 my-2"><label>Current Lord: </label><app-character
-                      [chr]=currentLord></app-character></div>
-                  <div class="col-12 my-2"><label>Coat of Arms:</label> {{selectedHouse.coatOfArms ?
-                    selectedHouse.coatOfArms : 'Unknown'}}</div>
-                  <div class="col-12 my-2"><label>Overlord: </label><app-base-house
-                      [baseHouse]=overlord></app-base-house> </div>
-                  <div class="col-12 my-2"><label>Founded: </label> {{selectedHouse.founded ?
-                    selectedHouse.founded :
-                    'Unknown'}}</div>
-                    <div class="col-12 my-2"><label>Died Out: </label> {{selectedHouse.diedOut ?
-                      selectedHouse.diedOut :
-                      'Unknown'}}</div>
-                    <div class="col-12 my-2"><label>House Words: </label> {{selectedHouse.words ?
-                      selectedHouse.words :
-                      'Unknown'}}</div>
+                <div class="col-12 my-2"><label>Region:</label>
+                  <h6>{{ selectedHouse.region ?
+                    selectedHouse.region : 'Unknown' }} </h6>
                 </div>
+                <div class="col-12 my-2"><label>Heir: </label> <app-character [chr]=heir></app-character></div>
+                <div class="col-12 my-2"><label>Founder: </label><app-character [chr]=founder></app-character></div>
+                <div class="col-12 my-2"><label>Current Lord: </label><app-character [chr]=currentLord></app-character>
+                </div>
+                <div class="col-12 my-2"><label>Coat of Arms:</label> {{selectedHouse.coatOfArms ?
+                  selectedHouse.coatOfArms : 'Unknown'}}</div>
+                <div class="col-12 my-2"><label>Overlord: </label><app-base-house [baseHouse]=overlord></app-base-house>
+                </div>
+                <div class="col-12 my-2"><label>Founded: </label> {{selectedHouse.founded ?
+                  selectedHouse.founded :
+                  'Unknown'}}</div>
+                <div class="col-12 my-2"><label>Died Out: </label> {{selectedHouse.diedOut ?
+                  selectedHouse.diedOut :
+                  'Unknown'}}</div>
+                <div class="col-12 my-2"><label>House Words: </label> {{selectedHouse.words ?
+                  selectedHouse.words :
+                  'Unknown'}}</div>
               </div>
-              <div class="col-sm-12 col-md-8">
-                <div class="row">
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                    <h4>Seats</h4>
-                    <div *ngIf="selectedHouse.seats[0]; else noSeats">
-                      <ul>
-                        <li *ngFor="let title of selectedHouse.titles">{{title}}</li>
-                      </ul>
-                    </div>
-                    <ng-template #noSeats>
-                      <p>No seats</p>
-                    </ng-template>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-8">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <h4>Seats</h4>
+                  <div *ngIf="selectedHouse.seats[0]; else noSeats">
+                    <ul>
+                      <li *ngFor="let title of selectedHouse.titles">{{title}}</li>
+                    </ul>
                   </div>
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                    <h4>Cadet Branches</h4>
-                    <div *ngIf="cadetBranches.length > 0; else noCadetBranches">
-                      <ul>
-                        <li *ngFor="let branch of cadetBranches"><app-base-house [baseHouse]=branch></app-base-house></li>
-                      </ul>
-                    </div>
-                    <ng-template #noCadetBranches>
-                      <p>No Cadet Branches</p>
-                    </ng-template>
+                  <ng-template #noSeats>
+                    <p>No seats</p>
+                  </ng-template>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <h4>Cadet Branches</h4>
+                  <div *ngIf="cadetBranches.length > 0; else noCadetBranches">
+                    <ul>
+                      <li *ngFor="let branch of cadetBranches"><app-base-house [baseHouse]=branch></app-base-house></li>
+                    </ul>
                   </div>
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                    <h4>Ancestral Weapons</h4>
-                    <div *ngIf="selectedHouse.ancestralWeapons[0]; else noAncestralWeapons">
-                      <ul>
-                        <li *ngFor="let weapon of selectedHouse.ancestralWeapons">{{weapon}}</li>
-                      </ul>
-                    </div>
-                    <ng-template #noAncestralWeapons>
-                      <p>No Ancestral Weapons</p>
-                    </ng-template>
-                  </div>  
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                    <h4>Titles</h4>
-                    <div *ngIf="selectedHouse.titles[0]; else noTitles">
-                      <ul>
-                        <li *ngFor="let title of selectedHouse.titles">{{title}}</li>
-                      </ul>
-                    </div>
-                    <ng-template #noTitles>
-                      <p>No Ancestral Weapons</p>
-                    </ng-template>
-                  </div>                 
-                  <div class="col-12">
-                    <div class="my-2">
-                      <h5 class="card-header">
-                        Sworn Members
-                      </h5>
-                      <div *ngIf="swornMembers[0]; else noSwornMembers">
-                      <div class="card-body">
-                          <div class="col-md-4" *ngFor="let member of swornMembers">
+                  <ng-template #noCadetBranches>
+                    <p>No Cadet Branches</p>
+                  </ng-template>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <h4>Ancestral Weapons</h4>
+                  <div *ngIf="selectedHouse.ancestralWeapons[0]; else noAncestralWeapons">
+                    <ul>
+                      <li *ngFor="let weapon of selectedHouse.ancestralWeapons">{{weapon}}</li>
+                    </ul>
+                  </div>
+                  <ng-template #noAncestralWeapons>
+                    <p>No Ancestral Weapons</p>
+                  </ng-template>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                  <h4>Titles</h4>
+                  <div *ngIf="selectedHouse.titles[0]; else noTitles">
+                    <ul>
+                      <li *ngFor="let title of selectedHouse.titles">{{title}}</li>
+                    </ul>
+                  </div>
+                  <ng-template #noTitles>
+                    <p>No Ancestral Weapons</p>
+                  </ng-template>
+                </div>
+                <hr>
+                <div class="col-12" id="swornDiv">
+                  <div class="my-2">
+                    <h5>
+                      Sworn Members
+                    </h5>
+                    <div *ngIf="swornMembers[0]; else noSwornMembers">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let member of swornMembers">
                             <app-character [chr]="member"></app-character>
                           </div>
                         </div>
                       </div>
-                      <ng-template #noSwornMembers>
-                        <p>No Sworn Members</p>
-                      </ng-template>
                     </div>
+                    <!-- </div> -->
+                    <ng-template #noSwornMembers>
+                      <p>No Sworn Members</p>
+                    </ng-template>
                   </div>
                 </div>
               </div>

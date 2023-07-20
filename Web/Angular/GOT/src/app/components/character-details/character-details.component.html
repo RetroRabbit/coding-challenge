@@ -1,105 +1,120 @@
 <div class="container mt-4">
-    
+
     <div class="row" *ngIf="selectedCharacter; else Loading">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <h1 class="card-title">{{selectedCharacter.name ? selectedCharacter.name : 'Nameless'}} </h1>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-2">
+                            <button class="btn btn-light my-2" (click)="GoBack()">Go Back</button>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4">
-                                    <div class="row px-2">
-                                        <div class="col-12 my-2"><label>Lived:</label> {{ selectedCharacter.born ? selectedCharacter.born : 'Unknown' }} - {{ selectedCharacter.died ? selectedCharacter.died : 'Unknown' }}</div>
-                                        <div class="col-12 my-2" ><label>Mother: </label> <app-character [chr]=mother></app-character></div>
-                                        <div class="col-12 my-2" ><label>Father: </label><app-character [chr]=father></app-character></div>
-                                        <div class="col-12 my-2" ><label>Spouse: </label><app-character [chr]=spouse></app-character></div>
-                                        <div class="col-12 my-2"><label>Culture:</label> {{selectedCharacter.culture ? selectedCharacter.culture : 'Unknown'}}</div>
-                                        <div class="col-12 my-2"><label>Gender: </label>  {{selectedCharacter.gender ? selectedCharacter.gender : 'Unknown'}}</div>
-                                        <div class="col-12 my-2">
-                                            <label class="mx-2">Played By</label>
-                                            <div *ngIf="selectedCharacter.tvSeries[0]; else noSeries">
-                                                <ul>
-                                                    <li *ngFor="let actor of selectedCharacter.playedBy">{{actor}}</li>
-                                                </ul>
-                                            </div>
-                                            <ng-template #noSeries>
-                                                <p>Actors unknown</p>
-                                            </ng-template>
-                                        </div>
+                        <div class="col-8 text-center">
+                            <h1 class="card-title">{{selectedCharacter.name ? selectedCharacter.name : 'Nameless'}}
+                            </h1>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="row px-2">
+                                <div class="col-12 my-2"><label>Lived:</label> {{ selectedCharacter.born ?
+                                    selectedCharacter.born : 'Unknown' }} - {{ selectedCharacter.died ?
+                                    selectedCharacter.died : 'Unknown' }}</div>
+                                <div class="col-12 my-2"><label>Mother: </label> <app-character
+                                        [chr]=mother></app-character></div>
+                                <div class="col-12 my-2"><label>Father: </label><app-character
+                                        [chr]=father></app-character></div>
+                                <div class="col-12 my-2"><label>Spouse: </label><app-character
+                                        [chr]=spouse></app-character></div>
+                                <div class="col-12 my-2"><label>Culture:</label> {{selectedCharacter.culture ?
+                                    selectedCharacter.culture : 'Unknown'}}</div>
+                                <div class="col-12 my-2"><label>Gender: </label> {{selectedCharacter.gender ?
+                                    selectedCharacter.gender : 'Unknown'}}</div>
+                                <div class="col-12 my-2">
+                                    <label class="mx-2">Played By</label>
+                                    <div *ngIf="selectedCharacter.tvSeries[0]; else noSeries">
+                                        <ul>
+                                            <li *ngFor="let actor of selectedCharacter.playedBy">{{actor}}</li>
+                                        </ul>
                                     </div>
+                                    <ng-template #noSeries>
+                                        <p>Actors unknown</p>
+                                    </ng-template>
                                 </div>
-                                <div class="col-sm-12 col-md-8">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6 col-md-4">
-                                            <h4>Titles</h4>
-                                            <div *ngIf="selectedCharacter.titles.length > 0; else noTitles">
-                                                <ul>
-                                                    <li *ngFor="let title of selectedCharacter.titles">{{title}}</li>
-                                                </ul>
-                                            </div>
-                                            <ng-template #noTitles>
-                                                <p>No titles</p>
-                                            </ng-template>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-4">
-                                            <h4>Aliases</h4>
-                                            <div *ngIf="selectedCharacter.aliases.length > 0; else noAliases">
-                                                <ul>
-                                                    <li *ngFor="let alias of selectedCharacter.aliases">{{alias}}</li>
-                                                </ul>
-                                            </div>
-                                            <ng-template #noAliases>
-                                                <p>No Aliases</p>
-                                            </ng-template>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-4">
-                                            <h4>Allegiances</h4>
-                                            <div *ngIf="allegiances[0]; else noAllegiances">
-                                                <ul>
-                                                    <li *ngFor="let ally of allegiances"><app-base-house [baseHouse]=ally></app-base-house></li>
-                                                </ul>
-                                            </div>
-                                            <ng-template #noAllegiances>
-                                                <p>No Allegiances</p>
-                                            </ng-template>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-4">
-                                            <h4>Books</h4>
-                                            <div *ngIf="books.length > 0; else noBooks">
-                                                <ul>
-                                                    <li *ngFor="let book of books"><app-base-book [book]=book></app-base-book></li>
-                                                </ul>
-                                            </div>
-                                            <ng-template #noBooks>
-                                                <p>No Books</p>
-                                            </ng-template>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-4">
-                                            <h4>POV Books</h4>
-                                            <div *ngIf="povbooks[0]; else noPOVBooks">
-                                                <ul>
-                                                    <li *ngFor="let book of povbooks"><app-base-book [book]=book></app-base-book></li>
-                                                </ul>
-                                            </div>
-                                            <ng-template #noPOVBooks>
-                                                <p>No POV Books</p>
-                                            </ng-template>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-4">
-                                            <h4>Starred in</h4>
-                                            <div *ngIf="selectedCharacter.tvSeries.length > 0; else noSeries">
-                                                <ul>
-                                                    <li *ngFor="let season of selectedCharacter.tvSeries">{{season}}</li>
-                                                </ul>
-                                            </div>
-                                            <ng-template #noSeries>
-                                                <p>No TV Series</p>
-                                            </ng-template>
-                                        </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <h4>Titles</h4>
+                                    <div *ngIf="selectedCharacter.titles.length > 0; else noTitles">
+                                        <ul>
+                                            <li *ngFor="let title of selectedCharacter.titles">{{title}}</li>
+                                        </ul>
                                     </div>
+                                    <ng-template #noTitles>
+                                        <p>No titles</p>
+                                    </ng-template>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <h4>Aliases</h4>
+                                    <div *ngIf="selectedCharacter.aliases.length > 0; else noAliases">
+                                        <ul>
+                                            <li *ngFor="let alias of selectedCharacter.aliases">{{alias}}</li>
+                                        </ul>
+                                    </div>
+                                    <ng-template #noAliases>
+                                        <p>No Aliases</p>
+                                    </ng-template>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <h4>Allegiances</h4>
+                                    <div *ngIf="allegiances[0]; else noAllegiances">
+                                        <ul>
+                                            <li *ngFor="let ally of allegiances"><app-base-house
+                                                    [baseHouse]=ally></app-base-house></li>
+                                        </ul>
+                                    </div>
+                                    <ng-template #noAllegiances>
+                                        <p>No Allegiances</p>
+                                    </ng-template>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <h4>Books</h4>
+                                    <div *ngIf="books.length > 0; else noBooks">
+                                        <ul>
+                                            <li *ngFor="let book of books"><app-base-book [book]=book></app-base-book>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <ng-template #noBooks>
+                                        <p>No Books</p>
+                                    </ng-template>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <h4>POV Books</h4>
+                                    <div *ngIf="povbooks[0]; else noPOVBooks">
+                                        <ul>
+                                            <li *ngFor="let book of povbooks"><app-base-book
+                                                    [book]=book></app-base-book></li>
+                                        </ul>
+                                    </div>
+                                    <ng-template #noPOVBooks>
+                                        <p>No POV Books</p>
+                                    </ng-template>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <h4>Starred in</h4>
+                                    <div *ngIf="selectedCharacter.tvSeries.length > 0; else noSeries">
+                                        <ul>
+                                            <li *ngFor="let season of selectedCharacter.tvSeries">{{season}}</li>
+                                        </ul>
+                                    </div>
+                                    <ng-template #noSeries>
+                                        <p>No TV Series</p>
+                                    </ng-template>
                                 </div>
                             </div>
                         </div>

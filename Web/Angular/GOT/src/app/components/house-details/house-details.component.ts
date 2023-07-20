@@ -90,5 +90,6 @@ export class HouseDetailsComponent {
   }
   GoBack() {
     this.location.back();
+
   }
 }

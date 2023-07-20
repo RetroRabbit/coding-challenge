@@ -22,7 +22,9 @@ export class CharacterDetailsComponent {
   allegiances : House[] = [];
   books : Book[] = [];
   povbooks : Book[] = [];
-  constructor(private store : Store<{character : Character}>,  private characterService: CharacterService, private bookService: BookService, private houseService: HouseService){}
+
+  constructor(private store : Store<{character : Character}>, private location: Location, private characterService: CharacterService, private bookService: BookService, private houseService: HouseService){}
+  
   ngOnInit(){
     this.store.select('character').subscribe(state => {
       this.selectedCharacter = state.character;
@@ -90,4 +92,5 @@ export class CharacterDetailsComponent {
       });
     });
   }
+
 }
