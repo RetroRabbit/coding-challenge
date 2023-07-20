@@ -5,7 +5,7 @@
         width="100">
     </a>
     <div class="d-flex align-items-center">
-      <button [disabled]="pageSize > 50 || pageSize < 1" class="btn btn-outline-light" (click)="FetchData()">Fetch</button>
+      <button [disabled]="pageSize > 50 || pageSize < 1" class="btn btn-outline-light mx-2" (click)="FetchData()">Fetch</button>
       <input class="form-control" type="number" [(ngModel)]=pageSize min="1" max="50">
     </div>
 
@@ -30,8 +30,6 @@
   </div>
 </nav>
 
-<!-- <div class="container-fluid main-content" [style.backgroundImage]="backgroundImage"> -->
 <div class="container-fluid main-content">
-
   <router-outlet></router-outlet>
 </div>
