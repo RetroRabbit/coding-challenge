@@ -12,12 +12,12 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-4">
                                     <div class="row px-2">
-                                        <div class="col-12 my-2"><label for="">Lived:</label> {{ selectedCharacter.born ? selectedCharacter.born : 'Unknown' }} - {{ selectedCharacter.died ? selectedCharacter.died : 'Unknown' }}</div>
-                                        <div class="col-12 my-2" ><label for="">Mother: </label> <app-character [chr]=mother></app-character></div>
-                                        <div class="col-12 my-2" ><label for="">Father: </label><app-character [chr]=father></app-character></div>
-                                        <div class="col-12 my-2" ><label for="">Spouse: </label><app-character [chr]=spouse></app-character></div>
-                                        <div class="col-12 my-2"><label for="">Culture:</label> {{selectedCharacter.culture ? selectedCharacter.culture : 'Unknown'}}</div>
-                                        <div class="col-12 my-2"><label for="">Gender: </label>  {{selectedCharacter.gender ? selectedCharacter.gender : 'Unknown'}}</div>
+                                        <div class="col-12 my-2"><label>Lived:</label> {{ selectedCharacter.born ? selectedCharacter.born : 'Unknown' }} - {{ selectedCharacter.died ? selectedCharacter.died : 'Unknown' }}</div>
+                                        <div class="col-12 my-2" ><label>Mother: </label> <app-character [chr]=mother></app-character></div>
+                                        <div class="col-12 my-2" ><label>Father: </label><app-character [chr]=father></app-character></div>
+                                        <div class="col-12 my-2" ><label>Spouse: </label><app-character [chr]=spouse></app-character></div>
+                                        <div class="col-12 my-2"><label>Culture:</label> {{selectedCharacter.culture ? selectedCharacter.culture : 'Unknown'}}</div>
+                                        <div class="col-12 my-2"><label>Gender: </label>  {{selectedCharacter.gender ? selectedCharacter.gender : 'Unknown'}}</div>
                                         <div class="col-12 my-2">
                                             <label class="mx-2">Played By</label>
                                             <div *ngIf="selectedCharacter.tvSeries[0]; else noSeries">
