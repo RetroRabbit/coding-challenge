@@ -35,7 +35,4 @@ export class AppComponent {
         this.selectedpage = ''
     }
   }
-  // FetchData() {
-  //   this.pageService.FetchData(this.pageSize);
-  // }
 }
