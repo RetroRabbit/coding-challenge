@@ -20,7 +20,9 @@ export class AppComponent {
   lastPage !: number;
   types : string[] = ['character', 'house', 'book'];
   urls :string[] = ['https://www.anapioficeandfire.com/api/characters?page=1&pageSize=','https://www.anapioficeandfire.com/api/houses?page=1&pageSize=','https://www.anapioficeandfire.com/api/books?page=1&pageSize=']
-  constructor(private http: HttpClient, private pageService: PageService, private router : Router, private houseStore: Store<{house : House}>,  private characterStore: Store<{character : Character}>, private bookStore: Store<{book : Character}>) {}
+  constructor(private pageService: PageService) {
+    this.pageService.FetchData(this.pageSize);
+  }
   
   ChangeLinkColor(event: MouseEvent) {
     var links = document.getElementsByClassName('nav-link');
@@ -32,46 +34,6 @@ export class AppComponent {
   }
 
   FetchData() {
-    for(let index = 0; index < this.types.length; index++){
-      this.http.get(this.urls[index]+this.pageSize, { observe: 'response' })
-      .subscribe((response: { headers: HttpHeaders; }) => {
-        this.lastPage = this.GetLastPageFromHeader(response.headers);
-        this.UpdateLastPage(this.lastPage, this.types[index]);
-      });
-    }
+    this.pageService.FetchData(this.pageSize);
   }
-  
-  private GetLastPageFromHeader(headers: HttpHeaders): number {
-    const linkHeader = headers.get('Link');
-    if (linkHeader) {
-      const regex = /<[^>]*page=(\d+)[^>]*>; rel="last"/;
-      const matches = regex.exec(linkHeader);
-      if (matches && matches.length > 1) {
-        return +matches[1];
-      }
-    }
-    return -1;
-  }
-  
-  UpdateLastPage(page: number, type : string) {
-    this.pageService.pageSize = this.pageSize;
-    switch(type){
-      case 'character':{
-        this.pageService.characterLastPage = page;
-        this.characterStore.dispatch(getAllCharacters({ pageNumber: 1}));
-        break;
-      }
-      case 'house':{
-        this.pageService.houseLastPage = page;
-        this.houseStore.dispatch(getAllHouses({ pageNumber: 1}));
-        break;
-      }
-      case 'book':{
-        this.pageService.bookLastPage = page;
-        this.bookStore.dispatch(getAllBooks({ pageNumber: 1}));
-        break;
-      }
-    }
-  }
-
 }

@@ -14,7 +14,7 @@ export class CharactersComponent {
 
   static currentPage = 1;
   characters : Character[] = [];
-  lastPage : number = 214;
+  lastPage !: number;
 
   constructor(private store: Store<{character : Character}>, private router : Router, private pageService: PageService){}
   ngOnInit() {

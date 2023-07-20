@@ -14,7 +14,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class BookComponent {
   book: Book | undefined;
   books: Book[] = [];
-  lastPage: number = 2;
+  lastPage !: number;
   static currentPage = 1;
   constructor(private store: Store<{ book: Book }>, private router : Router, private pageService : PageService, private http: HttpClient) {}
   ngOnInit() {
