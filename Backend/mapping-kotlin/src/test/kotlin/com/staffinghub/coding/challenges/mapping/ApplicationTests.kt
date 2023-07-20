@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -41,7 +42,7 @@ class ApplicationTests {
     @MockBean
     private lateinit var articleRepository: ArticleRepository
 
-    @MockBean
+    @Autowired
     private lateinit var mapper: ArticleMapper
     @Test
     fun contextLoads() {
@@ -82,15 +83,13 @@ class ApplicationTests {
 
         `when`(articleRepository.findBy(articleId)).thenReturn(article)
 
-        `when`(mapper.map(article)).thenReturn(articleDto)
+        val result = mapper.mapStructMap(article)
 
-        val result = mapper.map(article)
         result shouldBe articleDto
 
-        val testArticle = mapper.map(articleRepository.findBy(articleId))
-        testArticle shouldBe articleDto
+        val testArticleSort = articleRepository.findBy(articleId)
 
-        assert(testArticle.blocks.elementAt(0).sortIndex<=testArticle.blocks.elementAt(1).sortIndex)
+        assert(testArticleSort.blocks.elementAt(0).sortIndex<=testArticleSort.blocks.elementAt(1).sortIndex)
     }
 
     /**

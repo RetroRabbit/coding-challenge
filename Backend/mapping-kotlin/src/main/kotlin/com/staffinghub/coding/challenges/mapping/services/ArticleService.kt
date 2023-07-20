@@ -16,10 +16,8 @@ class ArticleService(
      *@return List of AriticleDto that have been mapped to the data opject with internal Blocks sorted by sortIndex
      */
     fun list(): List<ArticleDto> {
-
         val articles = ArticleRepository.all()
-        val articleDtoList = articles.adaptListTo(ArticleDto::class)
-        return articleDtoList.toList()
+        return articles.adaptListTo(ArticleDto::class).toList()
     }
     /**
      *@return Single Instance of AriticleDto that have been mapped to the data opject with internal Blocks sorted by sortIndex
@@ -30,7 +28,7 @@ class ArticleService(
         if(article == null)
             throw  ResponseStatusException( HttpStatus.NOT_FOUND, "No Article with suplied ID found")
 
-        val articleDto = mapper.map(article)
+        val articleDto = mapper.mapStructMap(article)
         return articleDto
     }
 
