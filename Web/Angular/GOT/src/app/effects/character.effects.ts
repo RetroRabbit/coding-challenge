@@ -23,18 +23,7 @@ export class CharacterEffects {
       ) 
     )
   );
-
-  // getAllCharacters$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(CharacterActions.getAllCharacters),
-  //     mergeMap(() =>
-  //       this.characterService.getAllCharacters().pipe(
-  //         map(characters => CharacterActions.getAllCharactersSuccess({ characters })),
-  //         catchError(error => of(CharacterActions.getCharactersFailure({ error })))
-  //       )
-  //     )
-  //   )
-  // );
+  
   getAllCharacters$ = createEffect(() =>
   this.actions$.pipe(
     ofType(CharacterActions.getAllCharacters),

@@ -12,25 +12,25 @@
               <div class="col-sm-12 col-md-4">
                 <div class="row px-2">
 
-                  <div class="col-12 my-2"><label for="">Region:</label> <h6>{{ selectedHouse.region ?
+                  <div class="col-12 my-2"><label>Region:</label> <h6>{{ selectedHouse.region ?
                     selectedHouse.region : 'Unknown' }} </h6></div>
-                  <div class="col-12 my-2"><label for="">Heir: </label> <app-character
+                  <div class="col-12 my-2"><label>Heir: </label> <app-character
                       [chr]=heir></app-character></div>
-                  <div class="col-12 my-2"><label for="">Founder: </label><app-character
+                  <div class="col-12 my-2"><label>Founder: </label><app-character
                       [chr]=founder></app-character></div>
-                  <div class="col-12 my-2"><label for="">Current Lord: </label><app-character
+                  <div class="col-12 my-2"><label>Current Lord: </label><app-character
                       [chr]=currentLord></app-character></div>
-                  <div class="col-12 my-2"><label for="">Coat of Arms:</label> {{selectedHouse.coatOfArms ?
+                  <div class="col-12 my-2"><label>Coat of Arms:</label> {{selectedHouse.coatOfArms ?
                     selectedHouse.coatOfArms : 'Unknown'}}</div>
-                  <div class="col-12 my-2"><label for="">Overlord: </label><app-base-house
+                  <div class="col-12 my-2"><label>Overlord: </label><app-base-house
                       [baseHouse]=overlord></app-base-house> </div>
-                  <div class="col-12 my-2"><label for="">Founded: </label> {{selectedHouse.founded ?
+                  <div class="col-12 my-2"><label>Founded: </label> {{selectedHouse.founded ?
                     selectedHouse.founded :
                     'Unknown'}}</div>
-                    <div class="col-12 my-2"><label for="">Died Out: </label> {{selectedHouse.diedOut ?
+                    <div class="col-12 my-2"><label>Died Out: </label> {{selectedHouse.diedOut ?
                       selectedHouse.diedOut :
                       'Unknown'}}</div>
-                    <div class="col-12 my-2"><label for="">House Words: </label> {{selectedHouse.words ?
+                    <div class="col-12 my-2"><label>House Words: </label> {{selectedHouse.words ?
                       selectedHouse.words :
                       'Unknown'}}</div>
                 </div>

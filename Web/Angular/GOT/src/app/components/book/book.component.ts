@@ -14,15 +14,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class BookComponent {
   book: Book | undefined;
   books: Book[] = [];
-  lastPage: number = 2;
+  lastPage !: number;
   static currentPage = 1;
   constructor(private store: Store<{ book: Book }>, private router : Router, private pageService : PageService, private http: HttpClient) {}
   ngOnInit() {
     this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
     this.store.select('book').subscribe(state => {
       this.books = state.books;
-      this.lastPage = this.pageService.bookLastPage
-      // this.FetchData();
+      this.lastPage = this.pageService.bookLastPage;
     });
   }
   SelectedBook(isbn: string){
@@ -61,23 +60,4 @@ export class BookComponent {
   GetCurrentPage(): number {
     return BookComponent.currentPage;
   }
-
-  // FetchData() {
-  //   const url = `https://www.anapioficeandfire.com/api/books?page=1&pageSize=${this.pageService.pageSize}`;
-  //   this.http.get(url, { observe: 'response' })
-  //     .subscribe((response: { headers: HttpHeaders; }) => {
-  //       this.lastPage = this.GetLastPageFromHeader(response.headers);
-  //     });
-  // }
-  // private GetLastPageFromHeader(headers: HttpHeaders): number {
-  //   const linkHeader = headers.get('Link');
-  //   if (linkHeader) {
-  //     const regex = /<[^>]*page=(\d+)[^>]*>; rel="last"/;
-  //     const matches = regex.exec(linkHeader);
-  //     if (matches && matches.length > 1) {
-  //       return +matches[1];
-  //     }
-  //   }
-  //   return -1;
-  // }
 }

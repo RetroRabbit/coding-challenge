@@ -16,7 +16,7 @@ export class HouseComponent  {
   characters : Character[] = [];
   static currentPage = 1;
   
-  lastPage : number = 214;
+  lastPage !: number;
 
   constructor(private store: Store<{house : House}>, private router : Router, private pageService: PageService){}
 
@@ -46,7 +46,7 @@ export class HouseComponent  {
     if(HouseComponent.currentPage < this.lastPage){
       HouseComponent.currentPage += 1;
     }else{
-      HouseComponent.currentPage = 213
+      HouseComponent.currentPage = this.lastPage;
     }
     this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
   }
