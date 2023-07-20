@@ -1,8 +1,10 @@
 package com.staffinghub.coding.challenges.mapping.models.dto.blocks;
 
+import com.staffinghub.coding.challenges.mapping.mappers.blocks.IMainArticleBlockMapper;
+import com.staffinghub.coding.challenges.mapping.models.db.blocks.VideoBlock;
 import com.staffinghub.coding.challenges.mapping.models.db.blocks.VideoBlockType;
 
-public class VideoBlock extends ArticleBlockDto {
+public class VideoBlockDto extends ArticleBlockDto {
 
     private String url;
 
@@ -22,5 +24,10 @@ public class VideoBlock extends ArticleBlockDto {
 
     public void setType(VideoBlockType type) {
         this.type = type;
+    }
+
+    @Override
+    public VideoBlock map(IMainArticleBlockMapper mapper) {
+        return mapper.map(this);
     }
 }

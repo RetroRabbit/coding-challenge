@@ -1,5 +1,8 @@
 package com.staffinghub.coding.challenges.mapping.models.db.blocks;
 
+import com.staffinghub.coding.challenges.mapping.mappers.blocks.IMainArticleBlockDtoMapper;
+import com.staffinghub.coding.challenges.mapping.models.dto.blocks.VideoBlockDto;
+
 public class VideoBlock extends ArticleBlock {
 
     private String url;
@@ -20,5 +23,9 @@ public class VideoBlock extends ArticleBlock {
 
     public void setType(VideoBlockType type) {
         this.type = type;
+    }
+
+    public VideoBlockDto map(IMainArticleBlockDtoMapper mapper) {
+        return mapper.map(this);
     }
 }

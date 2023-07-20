@@ -91,6 +91,6 @@ public class ArticleRepository {
         result.setLastModifiedBy("Max Mustermann");
         result.setImageSize(ImageSize.LARGE);
         result.setUrl("https://someurl.com/image/" + imageId);
-        return null;
+        return result;
     }
 }

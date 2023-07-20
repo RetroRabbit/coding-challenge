@@ -1,6 +1,10 @@
 package com.staffinghub.coding.challenges.mapping.models.dto.blocks;
 
-public class ArticleBlockDto {
+import com.staffinghub.coding.challenges.mapping.mappers.blocks.IMainArticleBlockMapper;
+import com.staffinghub.coding.challenges.mapping.mappers.blocks.IMappableBlock;
+import com.staffinghub.coding.challenges.mapping.models.db.blocks.ArticleBlock;
+
+public class ArticleBlockDto implements IMappableBlock {
     private int sortIndex;
 
     public int getSortIndex() {
@@ -9,5 +13,10 @@ public class ArticleBlockDto {
 
     public void setSortIndex(int sortIndex) {
         this.sortIndex = sortIndex;
+    }
+
+    @Override
+    public ArticleBlock map(IMainArticleBlockMapper mapper) {
+        return mapper.map(this);
     }
 }
