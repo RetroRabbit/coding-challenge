@@ -20,17 +20,24 @@ export class AppComponent {
   lastPage !: number;
   types : string[] = ['character', 'house', 'book'];
   urls :string[] = ['https://www.anapioficeandfire.com/api/characters?page=1&pageSize=','https://www.anapioficeandfire.com/api/houses?page=1&pageSize=','https://www.anapioficeandfire.com/api/books?page=1&pageSize=']
-  constructor(private http: HttpClient, private pageService: PageService, private router : Router, private houseStore: Store<{house : House}>,  private characterStore: Store<{character : Character}>, private bookStore: Store<{book : Character}>) {}
   
-  ChangeLinkColor(event: MouseEvent) {
-    var links = document.getElementsByClassName('nav-link');
-    for (var i = 0; i < links.length; i++) {
-      links[i].classList.remove('selected');
-    }
-    var selectedLink = event.target as HTMLElement;
-    selectedLink.classList.add('selected');
-  }
+  selectedpage = "";
 
+  constructor(private http: HttpClient, private pageService: PageService, private router : Router, private houseStore: Store<{house : House}>,  private characterStore: Store<{character : Character}>, private bookStore: Store<{book : Character}>) {}
+
+  ChangeLinkColor(event: Event) {
+    const target = event.target as HTMLAnchorElement;
+    switch (target.innerText) {
+      case 'Books':
+       this.selectedpage = 'book'
+        break;
+      case 'Characters':
+        this.selectedpage = 'character'
+        break;
+      default:
+        this.selectedpage = ''
+    }
+  }
   FetchData() {
     for(let index = 0; index < this.types.length; index++){
       this.http.get(this.urls[index]+this.pageSize, { observe: 'response' })
