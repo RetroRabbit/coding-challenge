@@ -61,23 +61,4 @@ export class BookComponent {
   GetCurrentPage(): number {
     return BookComponent.currentPage;
   }
-
-  // FetchData() {
-  //   const url = `https://www.anapioficeandfire.com/api/books?page=1&pageSize=${this.pageService.pageSize}`;
-  //   this.http.get(url, { observe: 'response' })
-  //     .subscribe((response: { headers: HttpHeaders; }) => {
-  //       this.lastPage = this.GetLastPageFromHeader(response.headers);
-  //     });
-  // }
-  // private GetLastPageFromHeader(headers: HttpHeaders): number {
-  //   const linkHeader = headers.get('Link');
-  //   if (linkHeader) {
-  //     const regex = /<[^>]*page=(\d+)[^>]*>; rel="last"/;
-  //     const matches = regex.exec(linkHeader);
-  //     if (matches && matches.length > 1) {
-  //       return +matches[1];
-  //     }
-  //   }
-  //   return -1;
-  // }
 }

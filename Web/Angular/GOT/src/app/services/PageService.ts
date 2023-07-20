@@ -8,6 +8,5 @@ export class PageService {
     bookLastPage : number = 2;
     houseLastPage : number = 45;
     characterLastPage : number = 214;
-    // lastPage: number = 214;
     constructor() { }
 }
