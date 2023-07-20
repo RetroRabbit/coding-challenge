@@ -18,6 +18,11 @@ public class EmailController {
         this.notificationHandler = notificationHandler;
     }
 
+    /**
+     * Creates a new email notification using the given emailNotification request {@link EmailNotification}
+     * @param emailNotification {@link EmailNotification} Email notification to request
+     * @return {@link ResponseEntity<EmailNotification>} The status of the notification request
+     */
     @PostMapping
     public ResponseEntity<EmailNotification> createEmailNotification(@RequestBody EmailNotification emailNotification) {
         EmailNotification emailNotificationResult = notificationHandler.processEmailNotification(emailNotification);
