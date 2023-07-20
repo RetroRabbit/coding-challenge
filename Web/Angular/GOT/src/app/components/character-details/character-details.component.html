@@ -6,7 +6,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-2">
-                            <button class="btn btn-light my-2" (click)="GoBack()">Go Back</button>
+                            <button class="btn btn-outline-light my-2" (click)="GoBack()">Go Back</button>
                         </div>
                         <div class="col-8 text-center">
                             <h1 class="card-title">{{selectedCharacter.name ? selectedCharacter.name : 'Nameless'}}
@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-12 col-md-4">
+                        <div class="col-sm-12 col-md-12 col-lg-4" id="left-column">
                             <div class="row px-2">
                                 <div class="col-12 my-2"><label>Lived:</label> {{ selectedCharacter.born ?
                                     selectedCharacter.born : 'Unknown' }} - {{ selectedCharacter.died ?
@@ -45,11 +45,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-8">
+                        <div class="col-sm-12 col-md-12 col-lg-8">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-4">
                                     <h4>Titles</h4>
-                                    <div *ngIf="selectedCharacter.titles.length > 0; else noTitles">
+                                    <div *ngIf="selectedCharacter.titles[0]; else noTitles">
                                         <ul>
                                             <li *ngFor="let title of selectedCharacter.titles">{{title}}</li>
                                         </ul>
@@ -81,30 +81,39 @@
                                         <p>No Allegiances</p>
                                     </ng-template>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="col-xs-12">
                                     <h4>Books</h4>
-                                    <div *ngIf="books.length > 0; else noBooks">
-                                        <ul>
-                                            <li *ngFor="let book of books"><app-base-book [book]=book></app-base-book>
-                                            </li>
-                                        </ul>
+                                    <div *ngIf="books[0]; else noBooks">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let book of books">
+                                                    <app-base-book [book]=book></app-base-book>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <ng-template #noBooks>
                                         <p>No Books</p>
                                     </ng-template>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                <hr>
+                                <div class="col-xs-12">
                                     <h4>POV Books</h4>
                                     <div *ngIf="povbooks[0]; else noPOVBooks">
-                                        <ul>
-                                            <li *ngFor="let book of povbooks"><app-base-book
-                                                    [book]=book></app-base-book></li>
-                                        </ul>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let book of povbooks">
+                                                    <app-base-book
+                                                    [book]=book></app-base-book>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <ng-template #noPOVBooks>
                                         <p>No POV Books</p>
                                     </ng-template>
                                 </div>
+                                <hr>
                                 <div class="col-xs-12 col-sm-6 col-md-4">
                                     <h4>Starred in</h4>
                                     <div *ngIf="selectedCharacter.tvSeries.length > 0; else noSeries">

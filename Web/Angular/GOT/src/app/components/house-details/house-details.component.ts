@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Character } from 'src/app/models/character.model';
 import { getCharacter } from 'src/app/actions/character.actions';
 import { CharacterService } from 'src/app/services/character.service';
-import { Observable, forkJoin, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HouseService } from 'src/app/services/house.service';
 @Component({
   selector: 'app-house-details',

@@ -7,6 +7,7 @@ import { House } from 'src/app/models/house.model';
 import { CharacterService } from 'src/app/services/character.service';
 import { BookService } from '../../services/book.service';
 import { HouseService } from 'src/app/services/house.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-character-details',
@@ -23,7 +24,7 @@ export class CharacterDetailsComponent {
   books : Book[] = [];
   povbooks : Book[] = [];
 
-  constructor(private store : Store<{character : Character}>, private location: Location, private characterService: CharacterService, private bookService: BookService, private houseService: HouseService){}
+  constructor(private store : Store<{character : Character}>, private location : Location, private characterService: CharacterService, private bookService: BookService, private houseService: HouseService){}
   
   ngOnInit(){
     this.store.select('character').subscribe(state => {
@@ -92,5 +93,7 @@ export class CharacterDetailsComponent {
       });
     });
   }
-
+  GoBack() {
+    this.location.back();
+  }
 }
