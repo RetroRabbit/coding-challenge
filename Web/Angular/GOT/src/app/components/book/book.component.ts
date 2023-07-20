@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { getBook, getAllBooks } from '../../actions/book.actions';
 import { Book } from '../../models/book.model';
 import { Router } from '@angular/router';
+import { PageService } from 'src/app/services/PageService';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-book',
@@ -12,12 +14,15 @@ import { Router } from '@angular/router';
 export class BookComponent {
   book: Book | undefined;
   books: Book[] = [];
+  lastPage: number = 2;
   static currentPage = 1;
-  constructor(private store: Store<{ book: Book }>, private router : Router) {}
+  constructor(private store: Store<{ book: Book }>, private router : Router, private pageService : PageService, private http: HttpClient) {}
   ngOnInit() {
     this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
     this.store.select('book').subscribe(state => {
       this.books = state.books;
+      this.lastPage = this.pageService.bookLastPage
+      // this.FetchData();
     });
   }
   SelectedBook(isbn: string){
@@ -31,7 +36,7 @@ export class BookComponent {
   }
 
   ShowLast(){
-    BookComponent.currentPage = 213;
+    BookComponent.currentPage = this.lastPage;
     this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
   }
 
@@ -39,7 +44,7 @@ export class BookComponent {
     if(BookComponent.currentPage < 2){
       BookComponent.currentPage += 1;
     }else{
-      BookComponent.currentPage = 213
+      BookComponent.currentPage = this.lastPage
     }
     this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
   }
@@ -56,4 +61,23 @@ export class BookComponent {
   GetCurrentPage(): number {
     return BookComponent.currentPage;
   }
+
+  // FetchData() {
+  //   const url = `https://www.anapioficeandfire.com/api/books?page=1&pageSize=${this.pageService.pageSize}`;
+  //   this.http.get(url, { observe: 'response' })
+  //     .subscribe((response: { headers: HttpHeaders; }) => {
+  //       this.lastPage = this.GetLastPageFromHeader(response.headers);
+  //     });
+  // }
+  // private GetLastPageFromHeader(headers: HttpHeaders): number {
+  //   const linkHeader = headers.get('Link');
+  //   if (linkHeader) {
+  //     const regex = /<[^>]*page=(\d+)[^>]*>; rel="last"/;
+  //     const matches = regex.exec(linkHeader);
+  //     if (matches && matches.length > 1) {
+  //       return +matches[1];
+  //     }
+  //   }
+  //   return -1;
+  // }
 }

@@ -22,15 +22,14 @@ export class BookDetailsComponent {
       this.selectedBook = state.book;
     });
     this.GetPOVCharacters(this.selectedBook.povCharacters);
+    this.GetCharacters(this.selectedBook.characters)
   }
 
   FormatDate(time: string): string {
     const date = new Date(time);
     return date.toLocaleDateString();
   }
-  LoadCharacters(){
-    this.GetCharacters(this.selectedBook.characters);
-  }
+
   GetCharacters(charactersUrl: any[]) {
     const bookRequest: Observable<Character>[] = charactersUrl.map(endpoint => {
       return this.characterService.getCharacter(endpoint);

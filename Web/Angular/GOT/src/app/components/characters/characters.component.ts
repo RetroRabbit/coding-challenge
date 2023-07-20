@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { getAllCharacters, getCharacter } from 'src/app/actions/character.actions';
 import { Character } from 'src/app/models/character.model';
+import { PageService } from 'src/app/services/PageService';
 
 @Component({
   selector: 'app-characters',
@@ -12,12 +13,15 @@ import { Character } from 'src/app/models/character.model';
 export class CharactersComponent {
 
   static currentPage = 1;
-  characters : Character[] = []
-  constructor(private store: Store<{character : Character}>, private router : Router){}
+  characters : Character[] = [];
+  lastPage : number = 214;
+
+  constructor(private store: Store<{character : Character}>, private router : Router, private pageService: PageService){}
   ngOnInit() {
     this.store.dispatch(getAllCharacters({ pageNumber: CharactersComponent.currentPage}));
     this.store.select('character').subscribe(state => {
       this.characters = state.characters;
+      this.lastPage = this.pageService.characterLastPage
     });
   }
 
@@ -32,15 +36,15 @@ export class CharactersComponent {
   }
 
   ShowLast(){
-    CharactersComponent.currentPage = 213;
+    CharactersComponent.currentPage = this.lastPage;
     this.store.dispatch(getAllCharacters({ pageNumber: CharactersComponent.currentPage}));
   }
 
   ShowNext(){
-    if(CharactersComponent.currentPage < 213){
+    if(CharactersComponent.currentPage < this.lastPage){
       CharactersComponent.currentPage += 1;
     }else{
-      CharactersComponent.currentPage = 213
+      CharactersComponent.currentPage = this.lastPage
     }
     this.store.dispatch(getAllCharacters({ pageNumber: CharactersComponent.currentPage}));
   }

@@ -1,9 +1,81 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card-body {
-    flex: 1;
+  flex: 1;
+}
+
+/* .floating-card {
+    animation-name: float;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .floating-card:hover {
+    animation-play-state: paused;
+  } */
+
+/* .container.my-4 {
+    position: absolute;
+    top: 40%;
+    left: calc(50% - 300px);
+    display: flex;
+  } */
+
+.card {
+  display: flex;
+  background-color: #17141d;
+  /* box-shadow: -1rem 0 3rem #000; */
+  /*   margin-left: -50px; */
+  transition: 0.4s ease-out;
+  position: relative;
+}
+/* .card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+} */
+
+.card:hover ~ .card {
+  position: relative;
+  left: 50px;
+  /* transition: 0.4s ease-out; */
+}
+
+.card-title {
+  color: #e8e8e8;
+}
+
+.card-header {
+  background-color: #8a231c;
+}
+
+.card .card-body {
+    background-color: #d2cdb0;
+    box-shadow: 1px -1px 3rem 0px rgba(0, 0, 0, 0.75) inset;
+    transition: all 1s;
+}
+
+.card:hover{
+    cursor: pointer;
+}
+.card:hover .card-body {
+  background-color: #d2cdb0;
+  box-shadow: 1px -1px 3rem 0px rgba(0, 0, 0, 0) inset;
+
+  cursor: pointer;
 }

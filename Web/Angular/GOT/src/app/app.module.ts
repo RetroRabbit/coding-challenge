@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,7 +45,8 @@ import { BaseBookComponent } from './components/base-book/base-book.component';
     AppRoutingModule,
     StoreModule.forRoot({ book: bookReducer, house : houseReducer, character : characterReducer}),
     EffectsModule.forRoot([BookEffects, HouseEffects, CharacterEffects]),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

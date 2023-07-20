@@ -1,6 +1,7 @@
 import { Character } from "./character.model";
 
 export interface House {
+    hovered: boolean;
     house : House,
     houses : House[],
     url: string,
