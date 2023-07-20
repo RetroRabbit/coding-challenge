@@ -16,6 +16,9 @@ export class BookComponent {
   books: Book[] = [];
   lastPage !: number;
   static currentPage = 1;
+
+  public pageSize: number = this.pageService.pageSize;
+
   constructor(private store: Store<{ book: Book }>, private router : Router, private pageService : PageService, private http: HttpClient) {}
   ngOnInit() {
     this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
@@ -59,5 +62,8 @@ export class BookComponent {
 
   GetCurrentPage(): number {
     return BookComponent.currentPage;
+  }
+  FetchData() {
+    this.pageService.FetchData(this.pageSize);
   }
 }

@@ -15,6 +15,8 @@ export class CharactersComponent {
   static currentPage = 1;
   characters : Character[] = [];
   lastPage !: number;
+  
+  public pageSize: number = this.pageService.pageSize;
 
   constructor(private store: Store<{character : Character}>, private router : Router, private pageService: PageService){}
   ngOnInit() {
@@ -59,5 +61,8 @@ export class CharactersComponent {
   }
   GetCurrentPage(): number {
     return CharactersComponent.currentPage;
+  }
+  FetchData() {
+    this.pageService.FetchData(this.pageSize);
   }
 }

@@ -17,7 +17,7 @@ export class HouseComponent  {
   static currentPage = 1;
   
   lastPage !: number;
-
+  public pageSize: number = this.pageService.pageSize;
   constructor(private store: Store<{house : House}>, private router : Router, private pageService: PageService){}
 
   ngOnInit() {
@@ -80,5 +80,8 @@ export class HouseComponent  {
       const index = Array.from(card.parentElement!.children).indexOf(card);
       this.houses[index].hovered = false;
     }
+  }
+  FetchData() {
+    this.pageService.FetchData(this.pageSize);
   }
 }
