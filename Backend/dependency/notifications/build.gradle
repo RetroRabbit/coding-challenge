@@ -1,5 +1,10 @@
 buildscript {
-    repositories { mavenCentral() }
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://repo.spring.io/milestone/"
+        }
+    }
 }
 
 plugins { id "io.spring.dependency-management" version "1.0.5.RELEASE" }
@@ -14,14 +19,20 @@ jar {
 }
 sourceCompatibility = 1.8
 
-repositories { mavenCentral() }
+repositories { mavenCentral()
+    maven {
+        url "https://repo.spring.io/milestone/"
+    }}
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.26'
     compile project(":inquiry")
     compile('org.springframework.boot:spring-boot-starter')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 dependencyManagement {
-    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
+    imports {
+        mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    }
 }
