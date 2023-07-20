@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit{
   constructor(
     private houseService: HouseService, 
     private messageService: MessageService,
-    private router: Router, ){}
+    private router: Router){}
 
   ngOnInit(): void {
     this.getHouses();
