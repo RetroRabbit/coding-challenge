@@ -4,7 +4,7 @@ import { getBook, getAllBooks } from '../../actions/book.actions';
 import { Book } from '../../models/book.model';
 import { Router } from '@angular/router';
 import { PageService } from 'src/app/services/PageService';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-book',
