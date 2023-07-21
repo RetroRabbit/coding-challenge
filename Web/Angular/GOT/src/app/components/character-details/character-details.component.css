@@ -1,5 +1,5 @@
 .card {
-    border: 0px solid black;
+    border: none;
 }
 .card-body {
     display: flex;
