@@ -44,7 +44,6 @@ export class DashboardComponent implements OnInit{
           else {
             this.houses = results;
           }
-          this.loading = false;
         }
         this.loading = false;
       },
