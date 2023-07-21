@@ -18,6 +18,10 @@ export class PageService {
     characterLastPage !: number ;
     lastPage !: number;
 
+    houseCurrentPage : number = 1;
+    bookCurrentPage : number = 1;
+    characterCurrentPage : number = 1;
+
     types : string[] = ['character', 'house', 'book'];
     urls :string[] = ['https://www.anapioficeandfire.com/api/characters?page=1&pageSize=','https://www.anapioficeandfire.com/api/houses?page=1&pageSize=','https://www.anapioficeandfire.com/api/books?page=1&pageSize=']
     

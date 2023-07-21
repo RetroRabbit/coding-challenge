@@ -26,6 +26,7 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { BaseBookComponent } from './components/base-book/base-book.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BaseBookComponent } from './components/base-book/base-book.component';
     CharacterDetailsComponent,
     BookDetailsComponent,
     BaseBookComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
