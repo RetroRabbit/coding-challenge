@@ -24,13 +24,6 @@ interface ArticleMapperMapstruct {
 
     fun mapToVideoBlockDto(videoBlock: VideoBlock): VideoBlockDto
 
-    fun mapToTextBlock(textBlock: TextBlock): ArticleBlock
-
-    fun mapToImageBlock(imageBlock: ImageBlock): ArticleBlock
-
-    fun mapToVideoBlock(videoBlock: VideoBlock): ArticleBlock
-
-
     fun mapToArticleDto(article: Article): ArticleDto {
         return ArticleDto(
             id = article.id,

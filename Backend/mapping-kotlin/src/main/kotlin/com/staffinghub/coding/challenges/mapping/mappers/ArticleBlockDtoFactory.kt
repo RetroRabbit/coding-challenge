@@ -1,6 +1,7 @@
 package com.staffinghub.coding.challenges.mapping.models.dto.blocks
 
 import com.staffinghub.coding.challenges.mapping.models.db.Image
+import com.staffinghub.coding.challenges.mapping.models.db.ImageSize
 import com.staffinghub.coding.challenges.mapping.models.db.blocks.ArticleBlock
 import org.mapstruct.ObjectFactory
 import org.springframework.stereotype.Component
@@ -19,13 +20,20 @@ class ArticleBlockDtoFactory {
                 text = articleBlock.text,
                 sortIndex = articleBlock.sortIndex
             )
-            is ImageBlock -> ImageBlockDto(
-                image = mapToImageDto(articleBlock.image!!),
-                sortIndex = articleBlock.sortIndex
-            )
+            is ImageBlock -> {
+                val imageDto = articleBlock.image?.let { mapToImageDto(it) }?: ImageDto(-1, "", ImageSize.SMALL)
+                ImageBlockDto(
+                    image = imageDto,
+                    sortIndex = articleBlock.sortIndex
+                )
+            }
             is VideoBlock -> VideoBlockDto(
                 url = articleBlock.url,
                 type = articleBlock.type,
+                sortIndex = articleBlock.sortIndex
+            )
+            is GalleryBlock -> GalleryBlockDto(
+                images = articleBlock.images?.mapNotNull { it?.let { image -> mapToImageDto(image) } } ?: emptyList(),
                 sortIndex = articleBlock.sortIndex
             )
             else -> throw IllegalArgumentException("Unknown ArticleBlock type")
