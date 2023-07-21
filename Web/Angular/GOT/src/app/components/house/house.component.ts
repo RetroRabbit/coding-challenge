@@ -32,34 +32,6 @@ export class HouseComponent  {
     this.router.navigate(['/Details/']);
   }
 
-  ShowFirst(){
-    HouseComponent.currentPage = 1;
-    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
-  }
-
-  ShowLast(){
-    HouseComponent.currentPage = this.lastPage;
-    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
-  }
-
-  ShowNext(){
-    if(HouseComponent.currentPage < this.lastPage){
-      HouseComponent.currentPage += 1;
-    }else{
-      HouseComponent.currentPage = this.lastPage;
-    }
-    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
-  }
-
-  ShowPrev(){
-    if(HouseComponent.currentPage > 1){
-      HouseComponent.currentPage -= 1;
-    }else{
-      HouseComponent.currentPage = 1
-    }
-    this.store.dispatch(getAllHouses({ pageNumber: HouseComponent.currentPage}));
-  }
-
   GetCurrentPage(): number {
     return HouseComponent.currentPage;
   }
@@ -80,8 +52,5 @@ export class HouseComponent  {
       const index = Array.from(card.parentElement!.children).indexOf(card);
       this.houses[index].hovered = false;
     }
-  }
-  FetchData() {
-    this.pageService.FetchData(this.pageSize);
   }
 }

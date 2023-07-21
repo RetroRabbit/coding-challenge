@@ -32,38 +32,7 @@ export class BookComponent {
     this.router.navigate(['/BookDetails/']);
   }
 
-  ShowFirst(){
-    BookComponent.currentPage = 1;
-    this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
-  }
-
-  ShowLast(){
-    BookComponent.currentPage = this.lastPage;
-    this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
-  }
-
-  ShowNext(){
-    if(BookComponent.currentPage < 2){
-      BookComponent.currentPage += 1;
-    }else{
-      BookComponent.currentPage = this.lastPage
-    }
-    this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
-  }
-
-  ShowPrev(){
-    if(BookComponent.currentPage > 1){
-      BookComponent.currentPage -= 1;
-    }else{
-      BookComponent.currentPage = 1
-    }
-    this.store.dispatch(getAllBooks({ pageNumber: BookComponent.currentPage}));
-  }
-
   GetCurrentPage(): number {
     return BookComponent.currentPage;
-  }
-  FetchData() {
-    this.pageService.FetchData(this.pageSize);
   }
 }

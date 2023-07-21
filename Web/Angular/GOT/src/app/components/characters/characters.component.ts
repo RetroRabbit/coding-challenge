@@ -32,37 +32,7 @@ export class CharactersComponent {
     this.router.navigate(['/CharacterDetails/']);
   }
 
-  ShowFirst(){
-    CharactersComponent.currentPage = 1;
-    this.store.dispatch(getAllCharacters({ pageNumber: CharactersComponent.currentPage}));
-  }
-
-  ShowLast(){
-    CharactersComponent.currentPage = this.lastPage;
-    this.store.dispatch(getAllCharacters({ pageNumber: CharactersComponent.currentPage}));
-  }
-
-  ShowNext(){
-    if(CharactersComponent.currentPage < this.lastPage){
-      CharactersComponent.currentPage += 1;
-    }else{
-      CharactersComponent.currentPage = this.lastPage
-    }
-    this.store.dispatch(getAllCharacters({ pageNumber: CharactersComponent.currentPage}));
-  }
-
-  ShowPrev(){
-    if(CharactersComponent.currentPage > 1){
-      CharactersComponent.currentPage -= 1;
-    }else{
-      CharactersComponent.currentPage = 1
-    }
-    this.store.dispatch(getAllCharacters({ pageNumber: CharactersComponent.currentPage}));
-  }
   GetCurrentPage(): number {
     return CharactersComponent.currentPage;
-  }
-  FetchData() {
-    this.pageService.FetchData(this.pageSize);
   }
 }
