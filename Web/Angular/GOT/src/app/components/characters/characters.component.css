@@ -1,3 +1,14 @@
+@media screen and (max-width: 900px) {
+  .container-fluid{
+    margin-bottom: 10rem;
+  }
+}
+@media screen and (min-width: 901px) {
+  .container-fluid{
+    margin-bottom: 5rem;
+  }
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -53,8 +64,4 @@
     z-index: 9999;
     padding: 1rem;
     background-color: #21252957;
-  }
-
-  .container-fluid{
-    margin-bottom: 5rem;
   }
