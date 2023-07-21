@@ -1,4 +1,5 @@
 package com.staffinghub.coding.challenges.dependency.notifications
+import com.staffinghub.coding.challenges.dependency.inquiry.Inquiry
 import com.staffinghub.coding.challenges.dependency.inquiry.InquiryCreatedEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
@@ -21,9 +22,9 @@ class InquiryCreatedEventListener(
      */
     @EventListener
     fun handleInquiryCreatedEvent(event: InquiryCreatedEvent) {
-        val inquiry = event.inquiry
+        val inq: Inquiry = event.inquiry
 
-        emailHandler.sendEmail(inquiry)
-        pushNotificationHandler.sendNotification(inquiry)
+        emailHandler.sendEmail(inq)
+        pushNotificationHandler.sendNotification(inq)
     }
 }
