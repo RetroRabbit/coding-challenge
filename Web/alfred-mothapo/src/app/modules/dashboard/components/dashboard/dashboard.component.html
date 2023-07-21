@@ -4,6 +4,8 @@
 <p-card header="Manage and View Houses">
     <p-progressBar *ngIf="loading" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
     <p-table
+    #dt1
+    dataKey="id"
     [value]="houses" 
     [tableStyle]="{'min-width': '60rem'}" 
     styleClass="p-datatable-gridlines" 
@@ -11,7 +13,17 @@
     [showCurrentPageReport]="true"
     [rows]="5"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[5,10, 25, 50]">
+    [rowsPerPageOptions]="[5,10, 25, 50]"
+    [globalFilterFields]="['name', 'region', 'coatOfArms']">
+
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" #searchText (input)="dt1.filterGlobal(searchText.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
     
     <ng-template pTemplate="header">
         <tr>

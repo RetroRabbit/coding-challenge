@@ -20,6 +20,9 @@ export class DashboardComponent implements OnInit{
   public disablePrevious: boolean = false;
   public searchValue: string = "";
 
+  //graph variables
+  public graphData: any[] = [];
+
   constructor(
     private houseService: HouseService, 
     private messageService: MessageService,
@@ -65,4 +68,5 @@ export class DashboardComponent implements OnInit{
   showError(errorMessage: string) {
     this.messageService.add({ severity: 'error', summary: 'Error', detail: `An error occured, details: ${errorMessage}` });
   } 
+
 }
