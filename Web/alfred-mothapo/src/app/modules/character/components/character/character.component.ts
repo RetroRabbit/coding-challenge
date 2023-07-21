@@ -6,8 +6,7 @@ import { CharacterService } from 'src/app/services/character/character.service';
 
 @Component({
   selector: 'app-character',
-  templateUrl: './character.component.html',
-  styleUrls: ['./character.component.css']
+  templateUrl: './character.component.html'
 })
 export class CharacterComponent implements OnInit{
 
