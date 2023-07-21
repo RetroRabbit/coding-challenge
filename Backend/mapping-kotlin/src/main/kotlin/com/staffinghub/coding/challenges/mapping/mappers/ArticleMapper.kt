@@ -9,7 +9,7 @@ import java.util.*
 
 @Component
 class ArticleMapper {
-    var mapperStruct:ArticleMapperMapstruct = Mappers.getMapper(ArticleMapperMapstruct::class.java)
+    var mapperStruct: ArticleMapperMapstruct = Mappers.getMapper(ArticleMapperMapstruct::class.java)
     fun map(article: Article): ArticleDto {
         return article.adaptTo(ArticleDto::class)
     }

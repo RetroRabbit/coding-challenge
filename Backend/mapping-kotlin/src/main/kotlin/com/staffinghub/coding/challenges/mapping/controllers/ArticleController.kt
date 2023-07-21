@@ -12,6 +12,7 @@ class ArticleController(
 ) {
     @GetMapping
     fun list(): List<ArticleDto> = articleService.list()
+
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @GetMapping("/{id}")
     fun details(@PathVariable id: Long): ArticleDto = articleService.articleForId(id)

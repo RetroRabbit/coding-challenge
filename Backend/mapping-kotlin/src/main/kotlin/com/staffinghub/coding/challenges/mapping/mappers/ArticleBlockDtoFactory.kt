@@ -20,22 +20,25 @@ class ArticleBlockDtoFactory {
                 text = articleBlock.text,
                 sortIndex = articleBlock.sortIndex
             )
+
             is ImageBlock -> {
-                val imageDto = articleBlock.image?.let { mapToImageDto(it) }?: ImageDto(-1, "", ImageSize.SMALL)
                 ImageBlockDto(
-                    image = imageDto,
+                    image = articleBlock.image?.let { mapToImageDto(it) } ?: ImageDto(-1, "", ImageSize.SMALL),
                     sortIndex = articleBlock.sortIndex
                 )
             }
+
             is VideoBlock -> VideoBlockDto(
                 url = articleBlock.url,
                 type = articleBlock.type,
                 sortIndex = articleBlock.sortIndex
             )
+
             is GalleryBlock -> GalleryBlockDto(
-                images = articleBlock.images?.mapNotNull { it?.let { image -> mapToImageDto(image) } } ?: emptyList(),
+                images = articleBlock.images.mapNotNull { it?.let { image -> mapToImageDto(image) } },
                 sortIndex = articleBlock.sortIndex
             )
+
             else -> throw IllegalArgumentException("Unknown ArticleBlock type")
         }
     }

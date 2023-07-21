@@ -35,8 +35,9 @@ interface ArticleMapperMapstruct {
     }
 
     @IterableMapping(elementTargetType = ArticleBlockDto::class)
-    fun mapBlocksToDto(blocks: Collection<ArticleBlock>): Collection<ArticleBlockDto>
-    {return blocks.map { mapToArticleBlockDto(it) }}
+    fun mapBlocksToDto(blocks: Collection<ArticleBlock>): Collection<ArticleBlockDto> {
+        return blocks.map { mapToArticleBlockDto(it) }
+    }
 
     fun mapToArticleBlockDto(articleBlock: ArticleBlock): ArticleBlockDto {
         return when (articleBlock) {

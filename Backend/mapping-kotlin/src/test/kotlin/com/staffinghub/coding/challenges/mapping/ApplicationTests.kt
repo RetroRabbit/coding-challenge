@@ -44,12 +44,14 @@ class ApplicationTests {
 
     @Autowired
     private lateinit var mapper: ArticleMapper
+
     @Test
     fun contextLoads() {
 
     }
+
     @Test
-    fun ArticleServiceTest(){
+    fun ArticleServiceTest() {
 
         val articleId = 1001L
 
@@ -60,9 +62,9 @@ class ApplicationTests {
             author = "Test Author",
             lastModified = Date(),
             blocks = listOf(
-                    TextBlockDB("Test text 1", 1),
-                    CreateImageBlockDB(articleId),
-                    TextBlockDB("Test text 2", 3)
+                TextBlockDB("Test text 1", 1),
+                CreateImageBlockDB(articleId),
+                TextBlockDB("Test text 2", 3)
             ).toSet()
         )
 
@@ -72,9 +74,9 @@ class ApplicationTests {
             description = "This is a test article",
             author = "Test Author",
             blocks = listOf(
-                    TextBlockDTO("Test text 1", 1),
-                    CreateImageBlockDTO(articleId),
-                    TextBlockDTO("Test text 2", 3)
+                TextBlockDTO("Test text 1", 1),
+                CreateImageBlockDTO(articleId),
+                TextBlockDTO("Test text 2", 3)
             )
         )
 
@@ -89,7 +91,7 @@ class ApplicationTests {
 
         val testArticleSort = articleRepository.findBy(articleId)
 
-        assert(testArticleSort.blocks.elementAt(0).sortIndex<=testArticleSort.blocks.elementAt(1).sortIndex)
+        assert(testArticleSort.blocks.elementAt(0).sortIndex <= testArticleSort.blocks.elementAt(1).sortIndex)
     }
 
     /**
@@ -97,79 +99,79 @@ class ApplicationTests {
      * To acertain that after the Database class has been mapped that the classes are equal
      */
     @Test
-    fun CheckTextBlockMap()
-    {
+    fun CheckTextBlockMap() {
         val textBlockDb = TextBlockDB(
-                text = "Some Text for $this",
-                sortIndex = 0
+            text = "Some Text for $this",
+            sortIndex = 0
         )
 
         val textBlockDto = TextBlockDTO(
-                text = "Some Text for $this",
-                sortIndex = 0
+            text = "Some Text for $this",
+            sortIndex = 0
         )
 
         assert(textBlockDto == textBlockDb.adaptTo(TextBlockDTO::class))
     }
+
     /**
      * Creates instances of both the VideoBlock Database and VideoBlockDto Data classes with the same values
      * To acertain that after the VideoBlock Database class has been mapped that the classes are equal
      */
     @Test
-    fun CheckVideoBlockMap()
-    {
+    fun CheckVideoBlockMap() {
         val videoBlockDB = VideoBlockDB(
-                type = VideoBlockType.YOUTUBE,
-                url = "https://youtu.be/myvideo",
-                sortIndex = 4
+            type = VideoBlockType.YOUTUBE,
+            url = "https://youtu.be/myvideo",
+            sortIndex = 4
         )
 
         val videoBlockDTO = VideoBlockDTO(
-                type = VideoBlockType.YOUTUBE,
-                url = "https://youtu.be/myvideo",
-                sortIndex = 4
+            type = VideoBlockType.YOUTUBE,
+            url = "https://youtu.be/myvideo",
+            sortIndex = 4
         )
 
         assert(videoBlockDTO == videoBlockDB.adaptTo(VideoBlockDTO::class))
     }
+
     /**
      * Creates instances of both the ImageBlock Database and ImageBlockDto Data classes with the same values
      * To acertain that after the ImageBlock Database class has been mapped that the classes are equal
      */
     @Test
-    fun CheckImageBlockMap()
-    {
-        val imageBlockDB =  CreateImageBlockDB(1L)
+    fun CheckImageBlockMap() {
+        val imageBlockDB = CreateImageBlockDB(1L)
 
         val imageBlockDTO = CreateImageBlockDTO(1L)
 
         assert(imageBlockDTO == imageBlockDB.adaptTo(imageBlockDTO::class))
     }
+
     /**
      * Creates instances of both the GalleryBlock Database and GalleryBlockDto Data classes with the same values
      * To acertain that after the GalleryBlock Database class has been mapped that the classes are equal
      */
     @Test
-    fun CheckGalleryBlockMap()
-    {
-        val galleryBlockDB =  GaleryBlockDb(
-                sortIndex = 3,
-                images = listOf(
-                        CreateImageBlockDB(1L).image,
-                        CreateImageBlockDB(2L).image
-                )
+    fun CheckGalleryBlockMap() {
+        val galleryBlockDB = GaleryBlockDb(
+            sortIndex = 3,
+            images = listOf(
+                CreateImageBlockDB(1L).image,
+                CreateImageBlockDB(2L).image
+            )
         )
 
         val galleryBlockDTO = GaleryBlockDTO(
-                sortIndex = 3,
-                images = listOf(
-                        CreateImageBlockDTO(1L).image,
-                        CreateImageBlockDTO(2L).image
-                )
+            sortIndex = 3,
+            images = listOf(
+                CreateImageBlockDTO(1L).image,
+                CreateImageBlockDTO(2L).image
+            )
         )
 
         assert(galleryBlockDTO == galleryBlockDB.adaptTo(GaleryBlockDTO::class))
     }
+
     /**
      * Creates an instance of the ImageBlock Database object
      *
@@ -177,18 +179,19 @@ class ApplicationTests {
      *
      * @return ImageBlock database object
      */
-    fun CreateImageBlockDB(imageId: Long) : ImageBlockDB
-    {
+    fun CreateImageBlockDB(imageId: Long): ImageBlockDB {
         return ImageBlockDB(
-                image = Image(
-                        url = "https://someurl.com/image/$imageId",
-                        id = imageId,
-                        imageSize = ImageSize.LARGE,
-                        lastModified = Date(),
-                        lastModifiedBy = "John Doe"),
-                sortIndex = 1
+            image = Image(
+                url = "https://someurl.com/image/$imageId",
+                id = imageId,
+                imageSize = ImageSize.LARGE,
+                lastModified = Date(),
+                lastModifiedBy = "John Doe"
+            ),
+            sortIndex = 1
         )
     }
+
     /**
      * Creates an instance of the ImageBlock DTO object
      *
@@ -196,14 +199,14 @@ class ApplicationTests {
      *
      * @return ImageBlock DTO object
      */
-    fun CreateImageBlockDTO(imageId: Long) : ImageBlockDTO
-    {
+    fun CreateImageBlockDTO(imageId: Long): ImageBlockDTO {
         return ImageBlockDTO(
-                image = ImageDto(
-                        url = "https://someurl.com/image/$imageId",
-                        id = imageId,
-                        imageSize = ImageSize.LARGE),
-                sortIndex = 1
+            image = ImageDto(
+                url = "https://someurl.com/image/$imageId",
+                id = imageId,
+                imageSize = ImageSize.LARGE
+            ),
+            sortIndex = 1
         )
     }
 }

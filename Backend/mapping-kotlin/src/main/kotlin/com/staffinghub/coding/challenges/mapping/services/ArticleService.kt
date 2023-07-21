@@ -19,17 +19,17 @@ class ArticleService(
         val articles = ArticleRepository.all()
         return articles.adaptListTo(ArticleDto::class).toList()
     }
+
     /**
      *@return Single Instance of AriticleDto that have been mapped to the data opject with internal Blocks sorted by sortIndex
      */
     fun articleForId(id: Long): ArticleDto {
         val article = ArticleRepository.findBy(id)
 
-        if(article == null)
-            throw  ResponseStatusException( HttpStatus.NOT_FOUND, "No Article with suplied ID found")
+        if (article == null)
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "No Article with suplied ID found")
 
-        val articleDto = mapper.mapStructMap(article)
-        return articleDto
+        return mapper.mapStructMap(article)
     }
 
     fun create(articleDto: ArticleDto): ArticleDto {
