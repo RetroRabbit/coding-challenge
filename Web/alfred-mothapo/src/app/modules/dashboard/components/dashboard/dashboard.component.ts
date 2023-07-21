@@ -20,9 +20,6 @@ export class DashboardComponent implements OnInit{
   public disablePrevious: boolean = false;
   public searchValue: string = "";
 
-  //graph variables
-  public graphData: any[] = [];
-
   constructor(
     private houseService: HouseService, 
     private messageService: MessageService,
