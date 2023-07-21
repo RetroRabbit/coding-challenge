@@ -25,7 +25,6 @@ export class PageService {
      }
 
     FetchData(size : number) {
-        console.log(size)
         this.pageSize = size;
         for(let index = 0; index < this.types.length; index++){
           this.http.get(this.urls[index]+this.pageSize, { observe: 'response' })
