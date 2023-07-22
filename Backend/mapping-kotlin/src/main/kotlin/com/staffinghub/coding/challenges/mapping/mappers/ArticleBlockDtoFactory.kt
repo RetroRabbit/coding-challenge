@@ -35,7 +35,7 @@ class ArticleBlockDtoFactory {
             )
 
             is GalleryBlock -> GalleryBlockDto(
-                images = articleBlock.images.mapNotNull { it?.let { image -> mapToImageDto(image) } },
+                images = articleBlock.images.mapNotNull { mapToImageDto(it) } ?: emptyList(),
                 sortIndex = articleBlock.sortIndex
             )
 
@@ -43,11 +43,13 @@ class ArticleBlockDtoFactory {
         }
     }
 
-    private fun mapToImageDto(image: Image): ImageDto {
-        return ImageDto(
-            id = image.id,
-            url = image.url,
-            imageSize = image.imageSize
-        )
+    private fun mapToImageDto(image: Image?): ImageDto? {
+        return image?.let {
+            ImageDto(
+                id = it.id,
+                url = it.url,
+                imageSize = it.imageSize
+            )
+        }
     }
 }
