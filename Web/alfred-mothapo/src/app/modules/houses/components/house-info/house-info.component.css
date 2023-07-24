@@ -1,0 +1,8 @@
+.house-image{
+    height: 100px;
+    width: 200px;
+}
+.container{
+    box-shadow: 5px 5px 5px  whitesmoke;
+    padding: 20px
+}

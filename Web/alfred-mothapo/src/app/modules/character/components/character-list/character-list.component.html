@@ -1,0 +1,71 @@
+<div class="container">
+    <app-sidebar></app-sidebar>
+    <br> 
+<p-card header="Manage and View Characters">
+    <p-progressBar *ngIf="loading" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+    <p-table
+    #dt1
+    dataKey="id"
+    [value]="characters" 
+    [tableStyle]="{'min-width': '60rem'}" 
+    styleClass="p-datatable-gridlines" 
+    [paginator]="true"
+    [showCurrentPageReport]="true"
+    [rows]="5"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5,10, 25, 50]"
+    [globalFilterFields]="['name', 'mother', 'father']">
+
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" #searchText (input)="dt1.filterGlobal(searchText.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+    
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+            <th pSortableColumn="gender">Gender <p-sortIcon field="gender"></p-sortIcon></th>
+            <th pSortableColumn="born">Born</th>
+            <th pSortableColumn="died">Died</th>
+            <th pSortableColumn="mother">Books</th>
+            <th>Aliases</th>
+            <th> </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-character>
+        <tr>
+            <td>{{character.name}}</td>
+            <td>{{character.gender}}</td>
+            <td>{{character.born}}</td>
+            <td>{{character.died}}</td>
+            <td>{{character.books?.length}}</td>
+            <td>
+                <ul *ngFor="let a of character?.alliases">
+                    <li *ngIf="a">
+                        {{a}}
+                    </li>
+                </ul>
+            </td>
+            <td><p-button (onClick)="showBooksDialog(character)" icon="pi pi-arrow-circle-right" label="View books" styleClass="p-button-secondary" [loading]="loading" ></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>
+    <br>
+    <p-button (click)="next()" icon="pi pi-download" [disabled]="loading" [loading]="loading"  label="Load more" class="paginator"></p-button>
+</p-card>
+<p-toast></p-toast>
+</div>
+
+<div class="card flex justify-content-center">
+    <p-dialog header="Books" [(visible)]="showCharacterDialog" [modal]="true">
+        <div class="flex py-2 justify-content-center">
+           <div *ngFor=" let book of selectedCharacter?.books">
+            <app-book [bookUrl]="book"></app-book>
+           </div>
+        </div>
+    </p-dialog>
+</div>

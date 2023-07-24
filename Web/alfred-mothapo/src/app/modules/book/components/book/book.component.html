@@ -1,0 +1,21 @@
+<p-fieldset>
+    <p-progressBar *ngIf="loading" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+    <ng-template pTemplate="header">
+        <div class="flex align-items-center text-primary">
+            <span class="pi pi-book mr-2"></span>
+            <span class="font-bold text-lg">{{book?.name}}</span>
+        </div>
+    </ng-template>
+    <div>
+        <p><strong>ISBN: </strong>{{book?.isbn}}</p>
+        <p><strong>Publisher: </strong>{{book?.publisher}}</p>
+        <p><strong>Country: </strong>{{book?.country}}</p>
+        <p><strong>Number Of Pages: </strong>{{book?.numberOfPages}}</p>
+        <p><strong>Released: </strong>{{book?.released}}</p>
+        <p><strong>Authors: </strong></p>
+        <ul *ngFor="let author of book?.authors">
+            <li>{{author}}</li>
+        </ul>
+        <p><strong>Characters: </strong>{{book?.characters?.length}}</p>
+    </div>
+</p-fieldset>

@@ -1,0 +1,54 @@
+<div class="container">
+    <app-sidebar></app-sidebar>
+    <br>
+    <h2 class="text-center"><span class="pi pi-home"></span> {{currentHouse?.name}}</h2>
+                <p class="text-center">{{currentHouse?.coatOfArms}}</p>
+    <div class="grid">
+        <div class="col" *ngIf="currentHouse?.currentLord">
+            <p-card>
+                <app-character [characterUrl]="currentHouse?.currentLord" title="Current Lord" *ngIf="currentHouse?.currentLord"></app-character>
+            </p-card>
+        </div>
+        <div class="col" *ngIf="currentHouse?.heir">
+            <p-card>
+                <app-character [characterUrl]="currentHouse?.heir" title="Heir"></app-character>
+            </p-card>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="col">
+            <p-card class="text-center">
+                <h2 ><span class="pi pi-users"></span> Sworn Members</h2>
+                <p>A list of Sworn members of the house</p>
+
+                <p-table *ngIf="!loading && swornMembers.length > 0"
+                    [value]="swornMembers" 
+                    [tableStyle]="{'min-width': '60rem'}" 
+                    styleClass="p-datatable-gridlines" 
+                    [paginator]="true"
+                    [rows]="5"
+                    [rowsPerPageOptions]="[5,10, 25, 50]">
+                <ng-template pTemplate="header">
+                        <tr>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Books</th>
+                            <th></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-member>
+                        <tr>
+                            <td>{{ member.name }}</td>
+                            <td>{{ member.gender }}</td>
+                            <td>{{ member.books?.length }}</td>
+                            <td></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-card>
+        </div>
+    </div>
+    <p-toast></p-toast>
+</div>
+

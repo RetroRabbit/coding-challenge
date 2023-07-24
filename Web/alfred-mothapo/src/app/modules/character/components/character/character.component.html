@@ -1,0 +1,40 @@
+<p-fieldset>
+    <p-progressBar *ngIf="loading" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+    <ng-template pTemplate="header">
+        <div class="flex align-items-center text-primary">
+            <span class="pi pi-user mr-2"></span>
+            <span class="font-bold text-lg">{{title}}</span>
+        </div>
+    </ng-template>
+    <div *ngIf="!loading">
+        <p><strong>Name: </strong>{{character?.name}}</p>
+        <p><strong>Gender: </strong>{{character?.gender}}</p>
+        <p><strong>Born: </strong>{{character?.born}}</p>
+        <p><strong>Titles: </strong></p>
+        <ul *ngFor="let title of character?.titles">
+            <li *ngIf="title">{{title}}</li>
+        </ul>
+        <p><strong>TV Series: </strong></p>
+        <ul *ngFor="let series of character?.tvSeries">
+            <li *ngIf="series">{{series}}</li>
+        </ul>
+        <p><strong>Played By: </strong></p>
+        <ul *ngFor="let person of character?.playedBy">
+            <li *ngIf="person">{{person}}</li>
+        </ul>
+
+        <p (click)="showBooks()" class="btn"><strong>Books: </strong>{{character?.books?.length}}</p>
+        <p-button (onClick)="showBooks()" icon="pi pi-arrow-circle-right" label="View Books" styleClass="p-button-secondary" [loading]="loading" ></p-button>
+    </div>
+</p-fieldset>
+<p-toast></p-toast>
+
+<div class="card flex justify-content-center">
+    <p-dialog header="Books" [(visible)]="showBooksDialog" [modal]="true">
+        <div class="flex py-2 justify-content-center">
+           <div *ngFor=" let book of character?.books">
+            <app-book [bookUrl]="book"></app-book>
+           </div>
+        </div>
+    </p-dialog>
+</div>
