@@ -2,7 +2,8 @@
     <p-sidebar [visible]="sidebarVisible" (onHide)="sidebarVisible = false">
         <ng-template pTemplate="header">Welcome</ng-template>
         <ng-template pTemplate="content">
-            <a [routerLink]= "['/']">Houses</a>
+            <p><a [routerLink]= "['/']"><i class="pi pi-home"></i> Houses</a></p>
+            <p><a [routerLink]= "['/characters']"> <i class="pi pi-users"></i> Characters</a></p>
         </ng-template>
 
     </p-sidebar>
