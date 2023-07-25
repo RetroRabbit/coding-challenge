@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/houseFragment">
+
+    <fragment
+        android:id="@+id/houseFragment"
+        android:name="com.example.gameofthrones.ui.house.HouseFragment"
+        android:label="Houses"
+        tools:layout="@layout/fragment_house" >
+        <action
+            android:id="@+id/action_houseFragment_to_houseDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.example.gameofthrones.ui.housedetails.HouseDetailFragment"
+        android:label="House Detail"
+        tools:layout="@layout/fragment_house_detail" />
+</navigation>
