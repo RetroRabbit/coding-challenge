@@ -6,4 +6,8 @@ data class VideoBlock(
     var url: String,
     var type: VideoBlockType,
     override val sortIndex: Int,
-) : ArticleBlockDto
+) : ArticleBlockDto, Comparable<ArticleBlockDto> {
+    override fun compareTo(other: ArticleBlockDto): Int {
+        return compareValuesBy(this, other) { it.sortIndex }
+    }
+}
