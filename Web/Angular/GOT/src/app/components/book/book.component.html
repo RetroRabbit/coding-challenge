@@ -1,0 +1,42 @@
+<div class="container-fluid">
+
+    <div class=""id="sticky-container">
+        <app-pagination pagnination="book"></app-pagination>
+    </div>
+  
+
+  <div class="row" *ngIf="books;else isLoading">
+      <div *ngFor="let book of books;let i = index"  class="col-xs-12 col-sm-6 col-md-4 col-lg-3 my-2" (click)="SelectedBook(book.isbn)">
+          <div class="card">
+              <div class="card-header text-center">
+                  <h4 class="card-title">{{book.name}}</h4>
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-6">
+
+                          <h4>Title: </h4>
+                          <h6>{{book.name ? book.name : 'Unknown'}}</h6>
+                      </div>
+                      <div class="col-md-6">
+
+                          <h4>ISBN: </h4>
+                          <h6> {{book.isbn ? book.isbn : 'Unknown'}}</h6>
+                        </div>
+                        <hr>
+                      <div class="col-xs-12">
+
+                          <h4>Author: </h4>
+                          <h6>{{book.authors[0] ? book.authors.join(', ') : 'Unknown'}}</h6>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <ng-template #isLoading>
+      <div class="text-center">
+          <h3 [ngStyle]="{'color' : 'white'}">Busy Fetching The Might Houses</h3>
+      </div>
+  </ng-template>
+</div>

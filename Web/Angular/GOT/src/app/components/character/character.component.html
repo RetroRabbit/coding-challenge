@@ -1,0 +1,6 @@
+<div *ngIf="character; else noCharacter">
+    <p>{{character.name}} : {{character.gender ? character.gender : 'Unknown gender'}} -  {{character.culture ? character.culture : 'Unknown culture' }}</p>
+</div>
+<ng-template #noCharacter>
+    <p>Unknown</p>
+</ng-template>

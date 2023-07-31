@@ -1,0 +1,32 @@
+.card {
+  border: none;
+}
+
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+label {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.card-title {
+  color: #e8e8e8;
+}
+
+.card-header {
+  background-color: #8a231c;
+}
+
+.card .card-body {
+  background-color: #d2cdb0;
+  box-shadow: 1px -1px 3rem 0px rgba(0, 0, 0, 0.75) inset;
+  transition: all 1s;
+}
+
+#left-column {
+  border-radius: 1rem;
+  box-shadow: -0px 0px 0.5rem 0px rgba(0, 0, 0, 0.281) inset;
+}

@@ -1,0 +1,31 @@
+.nav-link {
+  font-family: 'Game of Thrones', sans-serif;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: gold;
+}
+
+.nav-link {
+  font-size: 20px;
+}
+
+img {
+  color: white
+}
+
+.nav-item {
+  color: white;
+}
+
+.nav-item.selected {
+  color: gold;
+}
+
+.nav-link.active {
+  color: gold;
+}

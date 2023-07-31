@@ -1,0 +1,67 @@
+@media screen and (max-width: 900px) {
+  .container-fluid{
+    margin-bottom: 10rem;
+  }
+}
+@media screen and (min-width: 901px) {
+  .container-fluid{
+    margin-bottom: 5rem;
+  }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card-body {
+    flex: 1;
+  }
+  
+  .card {
+    display: flex;
+    background-color: #17141d;
+    transition: 0.4s ease-out;
+    position: relative;
+  }
+
+  
+  .card:hover ~ .card {
+    position: relative;
+    left: 50px;
+  }
+  
+  .card-title {
+    color: #e8e8e8;
+  }
+  
+  .card-header {
+    background-color: #525949;
+  }
+  
+  .card .card-body {
+      background-color: #d2cdb0;
+      box-shadow: 1px -1px 3rem 0px rgba(0, 0, 0, 0.75) inset;
+      transition: all 1s;
+  }
+  
+  .card:hover{
+      cursor: pointer;
+  }
+  .card:hover .card-body {
+    background-color: #d2cdb0;
+    box-shadow: 1px -1px 3rem 0px rgba(0, 0, 0, 0) inset;
+  
+    cursor: pointer;
+  }
+
+  #sticky-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom:0;
+    z-index: 9999;
+    padding: 1rem;
+    background-color: #21252957;
+  }

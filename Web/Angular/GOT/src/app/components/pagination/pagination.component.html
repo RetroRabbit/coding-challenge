@@ -1,0 +1,26 @@
+<div class="row  justify-content-center"> 
+    <div class="col-xs-12 col-md-4 my-2">
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                <div class="col-auto">
+                    <input class="form-control" type="number" [(ngModel)]=pageSize min="1" max="50">
+                </div>
+                <div class="col-auto">
+                    <button [disabled]="pageSize > 50 || pageSize < 1" class="btn btn-outline-light mx-2"
+                        (click)="FetchData()">Update Size</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <div class="d-flex justify-content-center"> 
+            <button class="btn btn-outline-light mx-2" (click)="ShowFirst()">First</button>
+            <button class="btn btn-light mx-2" (click)="ShowPrev()">Prev</button>
+            <button class="btn btn-light mx-2" (click)="ShowNext()">Next</button>
+            <button class="btn btn-outline-light mx-2" (click)="ShowLast()">Last</button>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4 mt-2 text-center">
+        <h5 [ngStyle]="{'color': 'white'}">Page {{ GetCurrentPage() }} of {{GetLastPage()}}</h5>
+    </div>
+</div>
